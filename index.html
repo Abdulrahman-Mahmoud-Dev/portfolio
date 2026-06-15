@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8J8EEBLNYW"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-8J8EEBLNYW');
-    </script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8J8EEBLNYW');
+</script>
     
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -133,7 +135,7 @@ nav a:hover{
     transform:scale(1.05);
 }
 
-/* HERO */
+/* HERO - تم تعديل القسم لإضافة الصورة وتنسيق العناصر */
 .hero{
     height:100vh;
     display:flex;
@@ -144,12 +146,12 @@ nav a:hover{
     padding:20px;
 }
 
-/* نمط الصورة الشخصية */
+/* نمط الصورة الشخصية - دائرية وصغيرة واحترافية */
 .profile-img-container {
     opacity: 0;
     transform: scale(0.8);
     transition: 1s ease-out 0.2s;
-    margin-bottom: 30px;
+    margin-bottom: 30px; /* مسافة تحت الصورة */
     position: relative;
     border-radius: 50%;
     padding: 3px;
@@ -157,23 +159,45 @@ nav a:hover{
     box-shadow: 0 10px 30px -10px var(--glow);
 }
 
+/* أنيميشن الدخول للصورة */
 .hero.animate-welcome .profile-img-container {
     opacity: 1;
     transform: scale(1);
 }
 
 .profile-img {
-    width: 120px;
+    width: 120px; /* حجم صغير واحترافي للمكتب */
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid var(--card);
+    border: 4px solid var(--card); /* حافة تفصل الصورة */
     transition: 0.3s ease;
     display: block;
 }
 
-/* التعديل: جعل العنوان في سطرين */
-.hero h1 {
+/* تأثير عند تمرير الماوس على الصورة */
+.profile-img-container:hover .profile-img {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px 5px var(--accent);
+}
+
+/* تأثير Glow إضافي */
+.profile-img-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 2px var(--accent);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.profile-img-container:hover::after {
+    opacity: 1;
+}
+
+/* تنسيق النص ليظهر في سطرين */
+.hero h1{
     font-size: 52px;
     opacity: 0; 
     color: var(--text);
@@ -184,35 +208,62 @@ nav a:hover{
 }
 
 .hi-text {
-    font-size: 24px;
+    font-size: 26px;
     font-weight: 300;
     margin-bottom: 5px;
 }
 
 @keyframes welcomeWaveAndGlow {
-    0% { opacity: 0; transform: translateY(30px); color: var(--text); text-shadow: 0 0 10px var(--glow); }
-    50% { opacity: 1; transform: translateY(-5px); color: var(--text); text-shadow: 0 0 25px var(--glow); }
-    100% { opacity: 1; transform: translateY(0); color: var(--text); text-shadow: 0 0 5px var(--glow); }
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        color: var(--text); 
+        text-shadow: 0 0 10px var(--glow); 
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-5px);
+        color: var(--text);
+        text-shadow: 0 0 25px var(--glow); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        color: var(--text); 
+        text-shadow: 0 0 5px var(--glow); 
+    }
 }
 
 @keyframes nameColorShift {
-    0% { color: var(--text); text-shadow: 0 0 5px var(--glow); }
-    100% { color: var(--accent); text-shadow: none; }
+    0% {
+        color: var(--text);
+        text-shadow: 0 0 5px var(--glow);
+    }
+    100% {
+        color: var(--accent); 
+        text-shadow: none; 
+    }
 }
 
 .hero.animate-welcome h1 {
     animation: welcomeWaveAndGlow 1.6s ease-out forwards;
-    animation-delay: 1s;
+    animation-delay: 1s; /* تأخير بسيط بعد ظهور الصورة */
 }
 
 .hero.animate-welcome h1 #nameSpan {
     animation: nameColorShift 1s ease-out forwards;
-    animation-delay: 2.6s;
+    animation-delay: 2.6s; /* بعد انتهاء حركة النص الأساسية */
 }
 
 @keyframes subtitleFade {
-    0% { opacity: 0; transform: translateY(15px); }
-    100% { opacity: 1; transform: translateY(0); }
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero p{
@@ -265,6 +316,7 @@ h2{
     line-height:1.7;
 }
 
+/* SKILLS */
 .skills{
     display:flex;
     flex-wrap:wrap;
@@ -284,12 +336,14 @@ h2{
     box-shadow:0 0 15px rgba(56,189,248,0.3);
 }
 
+/* PROJECTS */
 .projects{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:15px;
 }
 
+/* SOCIAL LINKS */
 .social-container {
     display: flex;
     flex-wrap: nowrap;
@@ -354,6 +408,7 @@ h2{
     margin-top:8px;
 }
 
+/* CONTACT */
 .contact{
     display:flex;
     flex-direction:column;
@@ -381,16 +436,154 @@ button{
 .hidden{opacity:0;transform:translateY(30px);transition:0.7s}
 .show{opacity:1;transform:translateY(0)}
 
+#contact input,
+#contact textarea,
+#contact button{
+    transition:0.25s ease;
+}
+
+#contact input:hover,
+#contact textarea:hover{
+    transform:translateY(-2px);
+}
+
+#contact input:focus,
+#contact textarea:focus{
+    outline:none;
+    transform:translateY(-2px);
+}
+
+#contact button:hover{
+    transform:translateY(-3px);
+}
+
 /* MEDIA QUERIES - تحديثات للجوال */
 @media (max-width: 600px) {
-    nav { padding: 12px 16px; gap: 8px; background: rgba(11, 18, 32, 0.95); }
-    body.light nav { background: rgba(248, 250, 252, 0.95); }
+    nav {
+        padding: 12px 16px;
+        gap: 8px;
+        background: rgba(11, 18, 32, 0.95);
+    }
+    body.light nav {
+        background: rgba(248, 250, 252, 0.95);
+    }
+    nav b {
+        font-size: 18px;
+    }
+    nav .btn {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
     
-    .hero { padding-top: 140px; height: auto; min-height: 90vh; }
-    .hero h1 { font-size: 32px; }
+    .nav-links-row {
+        gap: 12px;
+        justify-content: flex-start;
+    }
+    nav a {
+        font-size: 13px;
+    }
+
+    section {
+        padding: 40px 16px;
+    }
     
-    .projects { grid-template-columns: 1fr; }
-    section { padding: 40px 16px; }
+    /* ضبط قسم الـ Hero للجوال */
+    .hero {
+        padding-top: 140px; /* مسافة أكبر لترك مجال للـ Nav المقصوصة */
+        height: auto;
+        min-height: 90vh;
+        justify-content: flex-start; /* ترتيب من الأعلى لترك مسافة */
+    }
+
+    /* حجم الصورة للجوال - أصغر قليلاً ودائرية تماماً */
+    .profile-img-container {
+        margin-bottom: 20px;
+        padding: 2px;
+    }
+    .profile-img {
+        width: 100px; 
+        height: 100px;
+        border: 3px solid var(--card);
+    }
+
+    /* ضبط حجم الخط للاسم على الجوال */
+    .hero h1 {
+        font-size: 28px;
+    }
+    .hero p {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+    .cv-btn {
+        margin-top: 20px;
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+    
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    .about {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .skills {
+        gap: 8px;
+    }
+    .skill {
+        padding: 6px 12px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+    
+    .projects {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+    }
+    .card {
+        padding: 14px;
+        border-radius: 10px;
+    }
+    .card h3 {
+        font-size: 14px;
+    }
+    .card p {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    
+    .social-container {
+        gap: 10px;
+    }
+    .social-icon {
+        width: 38px;
+        height: 38px;
+    }
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .contact {
+        gap: 10px;
+    }
+    input, textarea {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+    button {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+    
+    footer {
+        padding: 20px !important;
+        font-size: 12px !important;
+    }
 }
 </style>
 </head>
@@ -441,6 +634,7 @@ button{
 <section id="skills" class="hidden">
     <h2>Skills</h2>
     <div class="skills">
+
         <div class="skill">Excel</div>
         <div class="skill">Power BI</div>
         <div class="skill">SQL</div>
@@ -453,18 +647,21 @@ button{
         <div class="skill">CSS</div>
         <div class="skill">JavaScript</div>
         <div class="skill">Git & GitHub</div>
+
         <div class="skill">Problem Solving</div>
         <div class="skill">Critical Thinking</div>
         <div class="skill">Communication</div>
         <div class="skill">Teamwork</div>
         <div class="skill">Time Management</div>
         <div class="skill">Adaptability</div>
+
     </div>
 </section>
 
 <section id="projects" class="hidden">
     <h2>Projects</h2>
     <div class="projects">
+
         <div class="card"><h3>Sales Dashboard</h3><p>Power BI analysis.</p></div>
         <div class="card"><h3>Customer Segmentation</h3><p>RFM analysis.</p></div>
         <div class="card"><h3>SQL Insights</h3><p>Business insights.</p></div>
@@ -476,35 +673,65 @@ button{
         <div class="card"><h3>Marketing Analysis</h3><p>Campaign performance.</p></div>
         <div class="card"><h3>Retail Insights</h3><p>Sales trends analysis.</p></div>
         <div class="card"><h3>Operations KPI</h3><p>Performance tracking.</p></div>
+
     </div>
 </section>
 
 <section id="links" class="hidden">
     <h2 id="linksTitle">Follow Me</h2>
+
     <div class="social-container">
+
         <a href="https://www.linkedin.com/in/abdulrahman-mahmoud-analyst" target="_blank" class="social-icon" title="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2-2.2 4.1-2.2 4.4 0 5.2 2.9 5.2 6.6V24h-5v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4V24h-5V8z"/></svg>
+            <svg viewBox="0 0 24 24">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2-2.2 4.1-2.2 4.4 0 5.2 2.9 5.2 6.6V24h-5v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4V24h-5V8z"/>
+            </svg>
         </a>
+
         <a href="https://github.com/Abdulrahman-Mahmoud-Dev" target="_blank" class="social-icon" title="GitHub">
-            <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.7 5.7.7 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.3-1.5-1.3-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.8 2.2 3.3 2.2.8 0 1.4-.1 1.8-.3.1-.7.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2 1-.3 2.1-.4 3.2-.4s2.2.1 3.2.4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.5-2.7 5.5-5.3 5.8.4.3.9 1 .9 2.1v3.1c0 .3.2.7.8.6A10.7 10.7 0 0 0 23.3 12C23.3 5.7 18.3.5 12 .5z"/></svg>
+            <svg viewBox="0 0 24 24">
+                <path d="M12 .5C5.7.5.7 5.7.7 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.3-1.5-1.3-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.8 2.2 3.3 2.2.8 0 1.4-.1 1.8-.3.1-.7.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2 1-.3 2.1-.4 3.2-.4s2.2.1 3.2.4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.5-2.7 5.5-5.3 5.8.4.3.9 1 .9 2.1v3.1c0 .3.2.7.8.6A10.7 10.7 0 0 0 23.3 12C23.3 5.7 18.3.5 12 .5z"/>
+            </svg>
         </a>
-        <a href="mailto:awertt699@gmail.com" class="social-icon" title="Email"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
-        <a href="https://youtube.com/channel/UCLk9npQemT1gmK7tysjXjeg" target="_blank" class="social-icon" title="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/></svg></a>
-        <a href="https://www.tiktok.com/@awil_34" target="_blank" class="social-icon" title="TikTok"><svg viewBox="0 0 24 24"><path d="M21 8.5a8.5 8.5 0 0 1-5-1.6v6.5a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1v3.1a3 3 0 1 0 2.2 2.9V0h3a5.8 5.8 0 0 0 5.1 5.1z"/></svg>
+
+        <a href="mailto:awertt699@gmail.com" class="social-icon" title="Email">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
         </a>
+
+        <a href="https://youtube.com/channel/UCLk9npQemT1gmK7tysjXjeg" target="_blank" class="social-icon" title="YouTube">
+            <svg viewBox="0 0 24 24">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
+            </svg>
+        </a>
+
+        <a href="https://www.tiktok.com/@awil_34" target="_blank" class="social-icon" title="TikTok">
+            <svg viewBox="0 0 24 24">
+                <path d="M21 8.5a8.5 8.5 0 0 1-5-1.6v6.5a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1v3.1a3 3 0 1 0 2.2 2.9V0h3a5.8 5.8 0 0 0 5.1 5.1z"/>
+            </svg>
+        </a>
+
         <a href="https://www.snapchat.com/add/awil-34" target="_blank" class="social-icon" title="Snapchat">
-            <svg viewBox="0 0 24 24"><path d="M12 2c3 0 5 2 5 5v5c0 2 1 3 3 3v2c-2 0-3 1-3 3-2 0-3 1-5 1s-3-1-5-1c0-2-1-3-3-3v-2c2 0 3-1 3-3V7c0-3 2-5 5-5z"/></svg>
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2c3 0 5 2 5 5v5c0 2 1 3 3 3v2c-2 0-3 1-3 3-2 0-3 1-5 1s-3-1-5-1c0-2-1-3-3-3v-2c2 0 3-1 3-3V7c0-3 2-5 5-5z"/>
+            </svg>
         </a>
+
     </div>
 </section>
 
 <section id="contact" class="hidden">
     <h2>Contact</h2>
+
     <div class="contact">
+
         <input type="text" placeholder="Name">
         <input type="email" placeholder="Email">
         <textarea rows="5" placeholder="Message"></textarea>
+
         <button>Send</button>
+
     </div>
 </section>
     
@@ -512,7 +739,9 @@ button{
     <p>© 2026 Abdulrahman Mahmoud. All rights reserved. | <a href="privacy.html" style="color: #38bdf8; text-decoration: none;">Privacy Policy</a></p>
 </footer>
     
+
 <script>
+
 /* THEME */
 function toggleTheme(){
     document.body.classList.toggle("light");
@@ -520,14 +749,24 @@ function toggleTheme(){
 
 /* LANGUAGE */
 let lang = "en";
+
 function toggleLang(){
     if(lang === "en"){
         lang = "ar";
-        document.getElementById("title").innerHTML = "<span class='hi-text'>مرحبًا، أنا</span><span id='nameSpan'>عبدالرحمن محمود</span>";
-        document.getElementById("subtitle").innerText = "محلل بيانات | مطور | حلّال مشاكل";
+
+        // تم تعديل النص ليناسب السطرين
+        document.getElementById("title").innerHTML =
+        "<span class='hi-text'>مرحبًا، أنا</span><span id='nameSpan'>عبدالرحمن محمود</span>";
+
+        document.getElementById("subtitle").innerText =
+        "محلل بيانات | مطور | حلّال مشاكل";
+
         document.getElementById("aboutTitle").innerText = "نبذة عني";
         document.getElementById("linksTitle").innerText = "تابعني";
-        document.getElementById("aboutText").innerText = "أنا محلل بيانات أعمل على تحويل البيانات إلى رؤى باستخدام الأدوات التحليلية.";
+
+        document.getElementById("aboutText").innerText =
+        "أنا محلل بيانات أعمل على تحويل البيانات إلى رؤى باستخدام الأدوات التحليلية.";
+
     } else {
         location.reload();
     }
@@ -549,22 +788,26 @@ document.querySelectorAll(".hidden, .hero").forEach(el=>{
     observer.observe(el);
 });
 
+// تأكيد تشغيل حركة الـ Hero عند التحميل
 window.addEventListener('load', () => {
     setTimeout(() => {
         document.getElementById('home').classList.add('animate-welcome');
     }, 100);
 });
 
-/* project hover logic */
+// إضافة منطق إضاءة المشاريع
 const cards = document.querySelectorAll(".card");
 cards.forEach(card=>{
     card.addEventListener("mouseenter", ()=>{
-        cards.forEach(c => { if(c !== card) c.classList.add("project-dim"); });
+        cards.forEach(c => {
+            if(c !== card) c.classList.add("project-dim");
+        });
     });
     card.addEventListener("mouseleave", ()=>{
         cards.forEach(c => c.classList.remove("project-dim"));
     });
 });
+
 </script>
 </body>
 </html>
