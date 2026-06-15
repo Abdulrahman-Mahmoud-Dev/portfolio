@@ -48,7 +48,7 @@ body{
     transition:0.4s ease;
 }
 
-/* NAV */
+/* NAV (PC) */
 nav{
     position:fixed;
     top:0;
@@ -200,10 +200,6 @@ h2{
     transition:0.3s ease;
 }
 
-.card{
-    transition:0.3s ease;
-}
-
 .card:hover{
     transform:translateY(-8px) scale(1.02);
     border:1px solid var(--accent);
@@ -250,39 +246,35 @@ button{
     transition:0.25s ease;
 }
 
-/* Hover بسيط بدون إضاءة */
 #contact input:hover,
 #contact textarea:hover{
     transform:translateY(-2px);
 }
 
-/* عند التركيز */
 #contact input:focus,
 #contact textarea:focus{
     outline:none;
     transform:translateY(-2px);
 }
 
-/* زر الإرسال */
 #contact button:hover{
     transform:translateY(-3px);
 }
 
 /* --------------------------------------------------- */
-/* التعديل الجديد لإصلاح واجهة الجوال وإعادة ترتيب القائمة */
+/* تعديل واجهة الموبايل: تصغير الأقسام السفلية فقط مع الحفاظ على الهيدر */
 /* --------------------------------------------------- */
 @media (max-width: 600px) {
+    /* بنية الهيدر العلوي تظل ثابتة ومحمية */
     nav {
         padding: 10px 12px;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
         background: rgba(11, 18, 32, 0.95);
     }
     body.light nav {
         background: rgba(248, 250, 252, 0.95);
     }
-    
-    /* سطر الاسم والأزرار في الموبايل */
     nav .brand-line {
         display: flex;
         align-items: center;
@@ -290,20 +282,15 @@ button{
         width: 100%;
         gap: 8px;
     }
-    
     nav b {
         font-size: 16px;
     }
-
-    /* الأزرار بجانب الاسم مباشرة */
     nav .btn {
         padding: 4px 8px;
         font-size: 11px;
         margin-left: 0px;
         border-radius: 6px;
     }
-    
-    /* إعادة قائمة الروابط لتكون بالأسفل كما في الصورة الثانية */
     nav .nav-links {
         display: flex;
         justify-content: center;
@@ -315,38 +302,102 @@ button{
         margin: 0 3px;
         font-size: 11px;
     }
-    
+
+    /* --------------------------------------------------- */
+    /* التعديل الفعلي: تصغير حجم وتكبير الأقسام السفلية بالكامل */
+    /* --------------------------------------------------- */
     section {
-        padding: 40px 12px;
+        padding: 25px 12px; /* تقليص الهوامش الرأسية والجانبية للأقسام */
     }
+    
+    /* قسم الهيرو الرئيسي */
     .hero {
-        padding-top: 130px;
+        padding-top: 100px;
+        height: auto;
+        min-height: 75vh;
     }
     .hero h1 {
-        font-size: 32px;
+        font-size: 24px; /* تصغير حجم الترحيب الرئيسي */
     }
     .hero p {
-        font-size: 14px;
+        font-size: 12px;
+        margin-top: 6px;
     }
-    .skills {
-        gap: 6px;
-    }
-    .skill {
-        padding: 6px 10px;
+    .cv-btn {
+        margin-top: 15px;
+        padding: 8px 12px;
         font-size: 12px;
     }
+    
+    /* العناوين والنبذة */
+    h2 {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    .about {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    /* قسم المهارات - جعلها أصغر وملمومة أكثر */
+    .skills {
+        gap: 5px;
+    }
+    .skill {
+        padding: 4px 8px;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+    
+    /* قسم المشاريع - تصغير الكروت والخطوط بداخلها */
     .projects {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 8px;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 6px;
     }
     .card {
-        padding: 12px;
+        padding: 10px;
+        border-radius: 8px;
     }
     .card h3 {
-        font-size: 14px;
+        font-size: 12px;
     }
     .card p {
-        font-size: 11px;
+        font-size: 10px;
+        margin-top: 3px;
+    }
+    
+    /* روابط التواصل الاجتماعي السفلى */
+    #links style {
+        gap: 8px !important;
+    }
+    #links a {
+        padding: 8px 12px !important;
+        font-size: 12px;
+        border-radius: 8px !important;
+    }
+    #links svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    /* فورم التواصل */
+    .contact {
+        gap: 8px;
+    }
+    input, textarea {
+        padding: 8px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+    button {
+        padding: 8px;
+        font-size: 12px;
+        border-radius: 6px;
+    }
+    
+    footer {
+        padding: 15px !important;
+        font-size: 11px !important;
     }
 }
 </style>
@@ -527,12 +578,12 @@ button{
 
 <script>
 
-/* THEME (UNCHANGED) */
+/* THEME */
 function toggleTheme(){
     document.body.classList.toggle("light");
 }
 
-/* LANGUAGE (UNCHANGED LOGIC) */
+/* LANGUAGE */
 let lang = "en";
 
 function toggleLang(){
@@ -555,7 +606,7 @@ function toggleLang(){
     }
 }
 
-/* scroll animation (UNCHANGED) */
+/* scroll animation */
 const observer = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
         if(e.isIntersecting) e.target.classList.add("show");
