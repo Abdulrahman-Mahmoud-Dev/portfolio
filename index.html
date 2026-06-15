@@ -1,775 +1,816 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8J8EEBLNYW"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-8J8EEBLNYW');
-    </script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8J8EEBLNYW');
+</script>
     
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulrahman Mahmoud | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdulrahman Mahmoud | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#0b1220;
+    --card:#111a2e;
+    --text:#e5e7eb;
+    --muted:#94a3b8;
+    --accent:#38bdf8;
+    --glow: rgba(56, 189, 248, 0.4);
+    --profile-border: rgba(255, 255, 255, 0.1);
+}
+
+body.light{
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --text:#0f172a;
+    --muted:#475569;
+    --accent:#0ea5e9;
+    --glow: rgba(14, 165, 233, 0.2);
+    --profile-border: rgba(0, 0, 0, 0.05);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    transition:0.4s ease;
+}
+
+/* NAV */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:15px 25px;
+    background:rgba(0,0,0,0.25);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    transition: background 0.4s ease;
+}
+
+body.light nav {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.nav-top-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: nowrap;
+}
+
+nav b {
+    font-size: 20px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.nav-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+.btn{
+    cursor:pointer;
+    padding:6px 12px;
+    border-radius:8px;
+    border:1px solid var(--accent);
+    background:transparent;
+    color:var(--text);
+    transition:0.3s;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.btn:hover{
+    background:var(--accent);
+    color:#000;
+}
+
+.nav-links-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    scrollbar-width: none;
+}
+
+.nav-links-row::-webkit-scrollbar {
+    display: none;
+}
+
+nav a{
+    color:var(--text);
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
+    font-size: 14px;
+}
+
+nav a:hover{
+    color:var(--accent);
+    transform:scale(1.05);
+}
+
+/* HERO - تم تعديل القسم لإضافة الصورة وتنسيق العناصر */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+/* نمط الصورة الشخصية - دائرية وصغيرة واحترافية */
+.profile-img-container {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: 1s ease-out 0.2s;
+    margin-bottom: 30px; /* مسافة تحت الصورة */
+    position: relative;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--accent), transparent);
+    box-shadow: 0 10px 30px -10px var(--glow);
+}
+
+/* أنيميشن الدخول للصورة */
+.hero.animate-welcome .profile-img-container {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.profile-img {
+    width: 120px; /* حجم صغير واحترافي للمكتب */
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--card); /* حافة تفصل الصورة */
+    transition: 0.3s ease;
+    display: block;
+}
+
+/* تأثير عند تمرير الماوس على الصورة */
+.profile-img-container:hover .profile-img {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px 5px var(--accent);
+}
+
+/* تأثير Glow إضافي */
+.profile-img-container::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 20px 2px var(--accent);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.profile-img-container:hover::after {
+    opacity: 1;
+}
+
+/* تنسيق النص ليظهر في سطر واحد */
+.hero h1{
+    font-size: 52px;
+    opacity: 0; 
+    color: var(--text);
+    white-space: nowrap; /* منع الالتفاف نهائياً ليبقى الاسم في سطر واحد */
+    overflow: hidden;
+    text-overflow: ellipsis; /* إضافة نقاط إذا زاد الطول جداً على شاشة نادرة */
+    max-width: 90%;
+}
+
+@keyframes welcomeWaveAndGlow {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+        color: var(--text); 
+        text-shadow: 0 0 10px var(--glow); 
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-5px);
+        color: var(--text);
+        text-shadow: 0 0 25px var(--glow); 
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        color: var(--text); 
+        text-shadow: 0 0 5px var(--glow); 
+    }
+}
+
+@keyframes nameColorShift {
+    0% {
+        color: var(--text);
+        text-shadow: 0 0 5px var(--glow);
+    }
+    100% {
+        color: var(--accent); 
+        text-shadow: none; 
+    }
+}
+
+.hero.animate-welcome h1 {
+    animation: welcomeWaveAndGlow 1.6s ease-out forwards;
+    animation-delay: 1s; /* تأخير بسيط بعد ظهور الصورة */
+}
+
+.hero.animate-welcome h1 span {
+    animation: nameColorShift 1s ease-out forwards;
+    animation-delay: 2.6s; /* بعد انتهاء حركة النص الأساسية */
+}
+
+@keyframes subtitleFade {
+    0% {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero p{
+    color:var(--muted);
+    margin-top:10px;
+    opacity: 0; 
+}
+
+.hero.animate-welcome p {
+    animation: subtitleFade 1s ease-out forwards;
+    animation-delay: 2.8s; 
+}
+
+.cv-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:10px 15px;
+    border-radius:10px;
+    background:var(--accent);
+    color:#000;
+    font-weight:700;
+    text-decoration:none;
+    transition:0.3s;
+    opacity: 0; 
+}
+
+.hero.animate-welcome .cv-btn {
+    animation: subtitleFade 1s ease-out forwards;
+    animation-delay: 3.2s; 
+}
+
+.cv-btn:hover{
+    transform:scale(1.08);
+}
+
+/* SECTIONS */
+section{
+    padding:90px 20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+h2{
+    color:var(--accent);
+    margin-bottom:20px;
+}
+
+.about{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* SKILLS */
+.skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.skill{
+    background:var(--card);
+    padding:10px 14px;
+    border-radius:10px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.skill:hover{
+    transform:translateY(-6px) scale(1.05);
+    box-shadow:0 0 15px rgba(56,189,248,0.3);
+}
+
+/* PROJECTS */
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+/* SOCIAL LINKS */
+.social-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 12px;
+    justify-content: flex-start;
+    overflow: visible;
+    padding: 10px 5px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    background: var(--card);
+    border-radius: 50%;
+    color: var(--text);
+    text-decoration: none;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+    transition: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-4px) scale(1.05);
+    border-color: var(--accent);
+    box-shadow: 0 0 12px rgba(56,189,248,0.4);
+    color: var(--text);
+}
+
+.card{
+    background:var(--card);
+    padding:18px;
+    border-radius:14px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.project-dim{
+    opacity:0.35;
+    transform:scale(0.98);
+    transition:0.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+    border:1px solid var(--accent);
+    box-shadow:0 0 20px rgba(56,189,248,0.2);
+}
+
+.card p{
+    color:var(--muted);
+    margin-top:8px;
+}
+
+/* CONTACT */
+.contact{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+input,textarea{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    background:var(--card);
+    color:var(--text);
+}
+
+button{
+    padding:10px;
+    border:none;
+    background:var(--accent);
+    font-weight:700;
+    cursor:pointer;
+    border-radius:8px;
+}
+
+.hidden{opacity:0;transform:translateY(30px);transition:0.7s}
+.show{opacity:1;transform:translateY(0)}
+
+#contact input,
+#contact textarea,
+#contact button{
+    transition:0.25s ease;
+}
+
+#contact input:hover,
+#contact textarea:hover{
+    transform:translateY(-2px);
+}
+
+#contact input:focus,
+#contact textarea:focus{
+    outline:none;
+    transform:translateY(-2px);
+}
+
+#contact button:hover{
+    transform:translateY(-3px);
+}
+
+/* MEDIA QUERIES - تحديثات للجوال */
+@media (max-width: 600px) {
+    nav {
+        padding: 12px 16px;
+        gap: 8px;
+        background: rgba(11, 18, 32, 0.95);
+    }
+    body.light nav {
+        background: rgba(248, 250, 252, 0.95);
+    }
+    nav b {
+        font-size: 18px;
+    }
+    nav .btn {
+        padding: 5px 10px;
+        font-size: 11px;
+    }
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    .nav-links-row {
+        gap: 12px;
+        justify-content: flex-start;
+    }
+    nav a {
+        font-size: 13px;
+    }
+
+    section {
+        padding: 40px 16px;
+    }
     
-    <style>
-        :root{
-            --bg:#0b1220;
-            --card:#111a2e;
-            --text:#e5e7eb;
-            --muted:#94a3b8;
-            --accent:#38bdf8;
-            --glow: rgba(255, 255, 255, 0.8);
-        }
-        
-        body.light{
-            --bg:#f8fafc;
-            --card:#ffffff;
-            --text:#0f172a;
-            --muted:#475569;
-            --accent:#0ea5e9;
-            --glow: rgba(15, 23, 42, 0.6);
-        }
-        
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Inter',sans-serif;
-            scroll-behavior:smooth;
-        }
-        
-        body{
-            background:var(--bg);
-            color:var(--text);
-            transition:0.4s ease;
-        }
-        
-        /* NAV */
-        nav{
-            position:fixed;
-            top:0;
-            width:100%;
-            display:flex;
-            flex-direction:column;
-            gap:10px;
-            padding:15px 25px;
-            background:rgba(0,0,0,0.25);
-            backdrop-filter:blur(10px);
-            z-index:1000;
-            transition: background 0.4s ease;
-        }
-        
-        body.light nav {
-            background: rgba(255, 255, 255, 0.25);
-        }
-        
-        .nav-top-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: nowrap;
-        }
-        
-        nav b {
-            font-size: 20px;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            gap: 8px;
-            flex-wrap: nowrap;
-        }
-        
-        .btn{
-            cursor:pointer;
-            padding:6px 12px;
-            border-radius:8px;
-            border:1px solid var(--accent);
-            background:transparent;
-            color:var(--text);
-            transition:0.3s;
-            font-size: 13px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-        
-        .btn:hover{
-            background:var(--accent);
-            color:#000;
-        }
-        
-        .nav-links-row {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            overflow-x: auto;
-            white-space: nowrap;
-            width: 100%;
-            scrollbar-width: none;
-        }
-        
-        .nav-links-row::-webkit-scrollbar {
-            display: none;
-        }
-        
-        nav a{
-            color:var(--text);
-            text-decoration:none;
-            font-weight:500;
-            transition:0.3s;
-            font-size: 14px;
-        }
-        
-        nav a:hover{
-            color:var(--accent);
-            transform:scale(1.05);
-        }
-        
-        /* HERO */
-        .hero{
-            height:100vh;
-            display:flex;
-            flex-direction:column;
-            justify-content:center;
-            align-items:center;
-            text-align:center;
-            padding:20px;
-        }
-        
-        /* New Styles for Profile Picture */
-        .profile-container {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 20px;
-            position: relative;
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.2);
-            opacity: 0;
-            cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .hero.animate-welcome .profile-container {
-            animation: subtitleFade 1s ease-out forwards;
-            animation-delay: 0.1s;
-        }
-        
-        .profile-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-        
-        .profile-container:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 0 35px rgba(56, 189, 248, 0.5);
-        }
-        
-        /* Animation keyframes and delays remain, with adjustments */
-        @keyframes welcomeWaveAndGlow {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-                color: var(--text); 
-                text-shadow: 0 0 10px var(--glow); 
-            }
-            50% {
-                opacity: 1;
-                transform: translateY(-5px);
-                color: var(--text);
-                text-shadow: 0 0 25px var(--glow); 
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-                color: var(--text); 
-                text-shadow: 0 0 5px var(--glow); 
-            }
-        }
-        
-        @keyframes nameColorShift {
-            0% {
-                color: var(--text);
-                text-shadow: 0 0 5px var(--glow);
-            }
-            100% {
-                color: var(--accent); 
-                text-shadow: none; 
-            }
-        }
-        
-        @keyframes subtitleFade {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .hero h1{
-            font-size:52px;
-            opacity: 0; 
-            color: var(--text); 
-        }
-        
-        .hero.animate-welcome h1 {
-            animation: welcomeWaveAndGlow 1.6s ease-out forwards;
-            animation-delay: 0.3s; /* Shifted delay slightly */
-        }
-        
-        .hero.animate-welcome h1 span {
-            animation: nameColorShift 1s ease-out forwards;
-            animation-delay: 1.9s; /* Shifted delay slightly */
-        }
-        
-        .hero p{
-            color:var(--muted);
-            margin-top:10px;
-            opacity: 0; 
-        }
-        
-        .hero.animate-welcome p {
-            animation: subtitleFade 1s ease-out forwards;
-            animation-delay: 2.1s; /* Shifted delay slightly */
-        }
-        
-        .cv-btn{
-            display:inline-block;
-            margin-top:20px;
-            padding:10px 15px;
-            border-radius:10px;
-            background:var(--accent);
-            color:#000;
-            font-weight:700;
-            text-decoration:none;
-            transition:0.3s;
-            opacity: 0; 
-        }
-        
-        .hero.animate-welcome .cv-btn {
-            animation: subtitleFade 1s ease-out forwards;
-            animation-delay: 2.5s; /* Shifted delay slightly */
-        }
-        
-        .cv-btn:hover{
-            transform:scale(1.08);
-        }
-        
-        /* SECTIONS */
-        section{
-            padding:90px 20px;
-            max-width:1000px;
-            margin:auto;
-        }
-        
-        h2{
-            color:var(--accent);
-            margin-bottom:20px;
-        }
-        
-        .about{
-            color:var(--muted);
-            line-height:1.7;
-        }
-        
-        /* SKILLS */
-        .skills{
-            display:flex;
-            flex-wrap:wrap;
-            gap:10px;
-        }
-        
-        .skill{
-            background:var(--card);
-            padding:10px 14px;
-            border-radius:10px;
-            transition:0.3s;
-            cursor:pointer;
-        }
-        
-        .skill:hover{
-            transform:translateY(-6px) scale(1.05);
-            box-shadow:0 0 15px rgba(56,189,248,0.3);
-        }
-        
-        /* PROJECTS */
-        .projects{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-            gap:15px;
-        }
-        
-        /* SOCIAL LINKS */
-        .social-container {
-            display: flex;
-            flex-wrap: nowrap;
-            gap: 12px;
-            justify-content: flex-start;
-            overflow: visible;
-            padding: 10px 5px;
-        }
-        
-        .social-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 42px;
-            height: 42px;
-            background: var(--card);
-            border-radius: 50%;
-            color: var(--text);
-            text-decoration: none;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            border: 2px solid transparent;
-            flex-shrink: 0;
-            box-sizing: border-box;
-        }
-        
-        .social-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-            transition: none;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-4px) scale(1.05);
-            border-color: var(--accent);
-            box-shadow: 0 0 12px rgba(56,189,248,0.4);
-            color: var(--text);
-        }
-        
-        .card{
-            background:var(--card);
-            padding:18px;
-            border-radius:14px;
-            transition:0.3s;
-            cursor:pointer;
-        }
-        
-        .project-dim{
-            opacity:0.35;
-            transform:scale(0.98);
-            transition:0.3s ease;
-        }
-        
-        .card:hover{
-            transform:translateY(-8px) scale(1.02);
-            border:1px solid var(--accent);
-            box-shadow:0 0 20px rgba(56,189,248,0.2);
-        }
-        
-        .card p{
-            color:var(--muted);
-            margin-top:8px;
-        }
-        
-        /* CONTACT */
-        .contact{
-            display:flex;
-            flex-direction:column;
-            gap:12px;
-        }
-        
-        input,textarea{
-            width:100%;
-            padding:10px;
-            border-radius:8px;
-            border:none;
-            background:var(--card);
-            color:var(--text);
-        }
-        
-        button{
-            padding:10px;
-            border:none;
-            background:var(--accent);
-            font-weight:700;
-            cursor:pointer;
-            border-radius:8px;
-        }
-        
-        .hidden{opacity:0;transform:translateY(30px);transition:0.7s}
-        .show{opacity:1;transform:translateY(0)}
-        
-        #contact input,
-        #contact textarea,
-        #contact button{
-            transition:0.25s ease;
-        }
-        
-        #contact input:hover,
-        #contact textarea:hover{
-            transform:translateY(-2px);
-        }
-        
-        #contact input:focus,
-        #contact textarea:focus{
-            outline:none;
-            transform:translateY(-2px);
-        }
-        
-        #contact button:hover{
-            transform:translateY(-3px);
-        }
-        
-        /* MEDIA QUERIES */
-        @media (max-width: 600px) {
-            nav {
-                padding: 12px 16px;
-                gap: 8px;
-                background: rgba(11, 18, 32, 0.95);
-            }
-            body.light nav {
-                background: rgba(248, 250, 252, 0.95);
-            }
-            nav b {
-                font-size: 18px;
-            }
-            nav .btn {
-                padding: 5px 10px;
-                font-size: 11px;
-            }
-            
-            .nav-links-row {
-                gap: 12px;
-                justify-content: flex-start;
-            }
-            nav a {
-                font-size: 13px;
-            }
-            
-            section {
-                padding: 40px 16px;
-            }
-            
-            .hero {
-                padding-top: 130px;
-                height: auto;
-                min-height: 80vh;
-            }
-            
-            /* Responsive Profile Picture */
-            .profile-container {
-                width: 80px;
-                height: 80px;
-                margin-bottom: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 26px;
-                line-height: 1.4;
-            }
-            .hero p {
-                font-size: 13px;
-                margin-top: 8px;
-            }
-            .cv-btn {
-                margin-top: 20px;
-                padding: 10px 16px;
-                font-size: 14px;
-            }
-            
-            h2 {
-                font-size: 20px;
-                margin-bottom: 15px;
-            }
-            .about {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-            
-            .skills {
-                gap: 8px;
-            }
-            .skill {
-                padding: 6px 12px;
-                font-size: 13px;
-                border-radius: 6px;
-            }
-            
-            .projects {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-                gap: 10px;
-            }
-            .card {
-                padding: 14px;
-                border-radius: 10px;
-            }
-            .card h3 {
-                font-size: 14px;
-            }
-            .card p {
-                font-size: 12px;
-                margin-top: 5px;
-            }
-            
-            .social-container {
-                gap: 10px;
-            }
-            .social-icon {
-                width: 38px;
-                height: 38px;
-            }
-            .social-icon svg {
-                width: 18px;
-                height: 18px;
-            }
-            
-            .contact {
-                gap: 10px;
-            }
-            input, textarea {
-                padding: 10px;
-                font-size: 14px;
-                border-radius: 6px;
-            }
-            button {
-                padding: 10px;
-                font-size: 14px;
-                border-radius: 6px;
-            }
-            
-            footer {
-                padding: 20px !important;
-                font-size: 12px !important;
-            }
-        }
-    </style>
+    /* ضبط قسم الـ Hero للجوال */
+    .hero {
+        padding-top: 140px; /* مسافة أكبر لترك مجال للـ Nav المقصوصة */
+        height: auto;
+        min-height: 90vh;
+        justify-content: flex-start; /* ترتيب من الأعلى لترك مسافة */
+    }
+
+    /* حجم الصورة للجوال - أصغر قليلاً ودائرية تماماً */
+    .profile-img-container {
+        margin-bottom: 20px;
+        padding: 2px;
+    }
+    .profile-img {
+        width: 100px; 
+        height: 100px;
+        border: 3px solid var(--card);
+    }
+
+    /* ضبط حجم الخط للاسم على الجوال ليبقى سطر واحد */
+    .hero h1 {
+        font-size: 24px; /* حجم أصغر لضمان السطر الواحد */
+        line-height: 1.3;
+        white-space: nowrap; /* تأكيد السطر الواحد */
+        max-width: 95%; /* استخدام معظم العرض */
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .hero p {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+    .cv-btn {
+        margin-top: 20px;
+        padding: 10px 16px;
+        font-size: 14px;
+    }
+    
+    h2 {
+        font-size: 20px;
+        margin-bottom: 15px;
+    }
+    .about {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .skills {
+        gap: 8px;
+    }
+    .skill {
+        padding: 6px 12px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+    
+    .projects {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+    }
+    .card {
+        padding: 14px;
+        border-radius: 10px;
+    }
+    .card h3 {
+        font-size: 14px;
+    }
+    .card p {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    
+    .social-container {
+        gap: 10px;
+    }
+    .social-icon {
+        width: 38px;
+        height: 38px;
+    }
+    .social-icon svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .contact {
+        gap: 10px;
+    }
+    input, textarea {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+    button {
+        padding: 10px;
+        font-size: 14px;
+        border-radius: 6px;
+    }
+    
+    footer {
+        padding: 20px !important;
+        font-size: 12px !important;
+    }
+}
+</style>
 </head>
 
 <body>
-    
-    <nav>
-        <div class="nav-top-row">
-            <b>Abdulrahman</b>
-            <div class="nav-buttons">
-                <button class="btn" onclick="toggleTheme()">Theme</button>
-                <button class="btn" onclick="toggleLang()">AR / EN</button>
-            </div>
+
+<nav>
+    <div class="nav-top-row">
+        <b>Abdulrahman</b>
+        <div class="nav-buttons">
+            <button class="btn" onclick="toggleTheme()">Theme</button>
+            <button class="btn" onclick="toggleLang()">AR / EN</button>
         </div>
-        
-        <div class="nav-links-row">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#projects">Projects</a>
-            <a href="#links">Links</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
+    </div>
+
+    <div class="nav-links-row">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<section class="hero" id="home">
+    <div class="profile-img-container">
+        <img src="https://lh3.googleusercontent.com/d/1Xy1mB1H4T6Lp5k9W9k1L1jJ4mZ9m4k1-=" alt="Abdulrahman Mahmoud" class="profile-img">
+    </div>
+
+    <h1 id="title">Hi, I'm <span id="nameSpan">Abdulrahman Mahmoud</span></h1>
+    <p id="subtitle">Data Analyst | Developer | Problem Solver</p>
+
+    <a class="cv-btn" href="#">Download CV</a>
+</section>
+
+<section id="about" class="hidden">
+    <h2 id="aboutTitle">About Me</h2>
+    <p class="about" id="aboutText">
+        I am a Data Analyst passionate about turning raw data into insights.
+        I work with Power BI, SQL, Python, and Excel.
+    </p>
+</section>
+
+<section id="skills" class="hidden">
+    <h2>Skills</h2>
+    <div class="skills">
+
+        <div class="skill">Excel</div>
+        <div class="skill">Power BI</div>
+        <div class="skill">SQL</div>
+        <div class="skill">Python</div>
+        <div class="skill">Statistics</div>
+        <div class="skill">Data Analysis</div>
+        <div class="skill">Data Cleaning</div>
+        <div class="skill">Dashboard Design</div>
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Git & GitHub</div>
+
+        <div class="skill">Problem Solving</div>
+        <div class="skill">Critical Thinking</div>
+        <div class="skill">Communication</div>
+        <div class="skill">Teamwork</div>
+        <div class="skill">Time Management</div>
+        <div class="skill">Adaptability</div>
+
+    </div>
+</section>
+
+<section id="projects" class="hidden">
+    <h2>Projects</h2>
+    <div class="projects">
+
+        <div class="card"><h3>Sales Dashboard</h3><p>Power BI analysis.</p></div>
+        <div class="card"><h3>Customer Segmentation</h3><p>RFM analysis.</p></div>
+        <div class="card"><h3>SQL Insights</h3><p>Business insights.</p></div>
+        <div class="card"><h3>Data Cleaning</h3><p>Python preprocessing.</p></div>
+        <div class="card"><h3>HR Analytics</h3><p>Employee insights.</p></div>
+        <div class="card"><h3>Forecast Model</h3><p>Prediction system.</p></div>
+        <div class="card"><h3>Logistics Analysis</h3><p>Supply chain insights.</p></div>
+        <div class="card"><h3>Finance Dashboard</h3><p>Revenue tracking.</p></div>
+        <div class="card"><h3>Marketing Analysis</h3><p>Campaign performance.</p></div>
+        <div class="card"><h3>Retail Insights</h3><p>Sales trends analysis.</p></div>
+        <div class="card"><h3>Operations KPI</h3><p>Performance tracking.</p></div>
+
+    </div>
+</section>
+
+<section id="links" class="hidden">
+    <h2 id="linksTitle">Follow Me</h2>
+
+    <div class="social-container">
+
+        <a href="https://www.linkedin.com/in/abdulrahman-mahmoud-analyst" target="_blank" class="social-icon" title="LinkedIn">
+            <svg viewBox="0 0 24 24">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2-2.2 4.1-2.2 4.4 0 5.2 2.9 5.2 6.6V24h-5v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4V24h-5V8z"/>
+            </svg>
+        </a>
+
+        <a href="https://github.com/Abdulrahman-Mahmoud-Dev" target="_blank" class="social-icon" title="GitHub">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 .5C5.7.5.7 5.7.7 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.3-1.5-1.3-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.8 2.2 3.3 2.2.8 0 1.4-.1 1.8-.3.1-.7.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2 1-.3 2.1-.4 3.2-.4s2.2.1 3.2.4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.5-2.7 5.5-5.3 5.8.4.3.9 1 .9 2.1v3.1c0 .3.2.7.8.6A10.7 10.7 0 0 0 23.3 12C23.3 5.7 18.3.5 12 .5z"/>
+            </svg>
+        </a>
+
+        <a href="mailto:awertt699@gmail.com" class="social-icon" title="Email">
+            <svg viewBox="0 0 24 24">
+                <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+        </a>
+
+        <a href="https://youtube.com/channel/UCLk9npQemT1gmK7tysjXjeg" target="_blank" class="social-icon" title="YouTube">
+            <svg viewBox="0 0 24 24">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
+            </svg>
+        </a>
+
+        <a href="https://www.tiktok.com/@awil_34" target="_blank" class="social-icon" title="TikTok">
+            <svg viewBox="0 0 24 24">
+                <path d="M21 8.5a8.5 8.5 0 0 1-5-1.6v6.5a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1v3.1a3 3 0 1 0 2.2 2.9V0h3a5.8 5.8 0 0 0 5.1 5.1z"/>
+            </svg>
+        </a>
+
+        <a href="https://www.snapchat.com/add/awil-34" target="_blank" class="social-icon" title="Snapchat">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2c3 0 5 2 5 5v5c0 2 1 3 3 3v2c-2 0-3 1-3 3-2 0-3 1-5 1s-3-1-5-1c0-2-1-3-3-3v-2c2 0 3-1 3-3V7c0-3 2-5 5-5z"/>
+            </svg>
+        </a>
+
+    </div>
+</section>
+
+<section id="contact" class="hidden">
+    <h2>Contact</h2>
+
+    <div class="contact">
+
+        <input type="text" placeholder="Name">
+        <input type="email" placeholder="Email">
+        <textarea rows="5" placeholder="Message"></textarea>
+
+        <button>Send</button>
+
+    </div>
+</section>
     
-    <section class="hero" id="home">
-        <div class="profile-container" onclick="toggleTheme()">
-            <img src="https://i.ibb.co/5R0L41t/image-0.png" alt="Abdulrahman Mahmoud Profile">
-        </div>
-        
-        <h1 id="title">Hi, I'm <span id="nameSpan">Abdulrahman Mahmoud</span></h1>
-        <p id="subtitle">Data Analyst | Developer | Problem Solver</p>
-        
-        <a class="cv-btn" href="#">Download CV</a>
-    </section>
+<footer style="text-align: center; padding: 25px; background: #111a2e; color: #94a3b8; font-size: 14px; border-top: 1px solid rgba(56,189,248,0.1);">
+    <p>© 2026 Abdulrahman Mahmoud. All rights reserved. | <a href="privacy.html" style="color: #38bdf8; text-decoration: none;">Privacy Policy</a></p>
+</footer>
     
-    <section id="about" class="hidden">
-        <h2 id="aboutTitle">About Me</h2>
-        <p class="about" id="aboutText">
-            I am a Data Analyst passionate about turning raw data into insights.
-            I work with Power BI, SQL, Python, and Excel.
-        </p>
-    </section>
-    
-    <section id="skills" class="hidden">
-        <h2>Skills</h2>
-        <div class="skills">
-            
-            <div class="skill">Excel</div>
-            <div class="skill">Power BI</div>
-            <div class="skill">SQL</div>
-            <div class="skill">Python</div>
-            <div class="skill">Statistics</div>
-            <div class="skill">Data Analysis</div>
-            <div class="skill">Data Cleaning</div>
-            <div class="skill">Dashboard Design</div>
-            <div class="skill">HTML</div>
-            <div class="skill">CSS</div>
-            <div class="skill">JavaScript</div>
-            <div class="skill">Git & GitHub</div>
-            
-            <div class="skill">Problem Solving</div>
-            <div class="skill">Critical Thinking</div>
-            <div class="skill">Communication</div>
-            <div class="skill">Teamwork</div>
-            <div class="skill">Time Management</div>
-            <div class="skill">Adaptability</div>
-            
-        </div>
-    </section>
-    
-    <section id="projects" class="hidden">
-        <h2>Projects</h2>
-        <div class="projects">
-            
-            <div class="card"><h3>Sales Dashboard</h3><p>Power BI analysis.</p></div>
-            <div class="card"><h3>Customer Segmentation</h3><p>RFM analysis.</p></div>
-            <div class="card"><h3>SQL Insights</h3><p>Business insights.</p></div>
-            <div class="card"><h3>Data Cleaning</h3><p>Python preprocessing.</p></div>
-            <div class="card"><h3>HR Analytics</h3><p>Employee insights.</p></div>
-            <div class="card"><h3>Forecast Model</h3><p>Prediction system.</p></div>
-            <div class="card"><h3>Logistics Analysis</h3><p>Supply chain insights.</p></div>
-            <div class="card"><h3>Finance Dashboard</h3><p>Revenue tracking.</p></div>
-            <div class="card"><h3>Marketing Analysis</h3><p>Campaign performance.</p></div>
-            <div class="card"><h3>Retail Insights</h3><p>Sales trends analysis.</p></div>
-            <div class="card"><h3>Operations KPI</h3><p>Performance tracking.</p></div>
-            
-        </div>
-    </section>
-    
-    <section id="links" class="hidden">
-        <h2 id="linksTitle">Follow Me</h2>
-        
-        <div class="social-container">
-            
-            <a href="https://www.linkedin.com/in/abdulrahman-mahmoud-analyst" target="_blank" class="social-icon" title="LinkedIn">
-                <svg viewBox="0 0 24 24">
-                    <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2-2.2 4.1-2.2 4.4 0 5.2 2.9 5.2 6.6V24h-5v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4V24h-5V8z"/>
-                </svg>
-            </a>
-            
-            <a href="https://github.com/Abdulrahman-Mahmoud-Dev" target="_blank" class="social-icon" title="GitHub">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 .5C5.7.5.7 5.7.7 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.3-1.5-1.3-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.8 2.2 3.3 2.2.8 0 1.4-.1 1.8-.3.1-.7.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2 1-.3 2.1-.4 3.2-.4s2.2.1 3.2.4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.5-2.7 5.5-5.3 5.8.4.3.9 1 .9 2.1v3.1c0 .3.2.7.8.6A10.7 10.7 0 0 0 23.3 12C23.3 5.7 18.3.5 12 .5z"/>
-                </svg>
-            </a>
-            
-            <a href="mailto:awertt699@gmail.com" class="social-icon" title="Email">
-                <svg viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-            </a>
-            
-            <a href="https://youtube.com/channel/UCLk9npQemT1gmK7tysjXjeg" target="_blank" class="social-icon" title="YouTube">
-                <svg viewBox="0 0 24 24">
-                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
-                </svg>
-            </a>
-            
-            <a href="https://www.tiktok.com/@awil_34" target="_blank" class="social-icon" title="TikTok">
-                <svg viewBox="0 0 24 24">
-                    <path d="M21 8.5a8.5 8.5 0 0 1-5-1.6v6.5a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1v3.1a3 3 0 1 0 2.2 2.9V0h3a5.8 5.8 0 0 0 5.1 5.1z"/>
-                </svg>
-            </a>
-            
-            <a href="https://www.snapchat.com/add/awil-34" target="_blank" class="social-icon" title="Snapchat">
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 2c3 0 5 2 5 5v5c0 2 1 3 3 3v2c-2 0-3 1-3 3-2 0-3 1-5 1s-3-1-5-1c0-2-1-3-3-3v-2c2 0 3-1 3-3V7c0-3 2-5 5-5z"/>
-                </svg>
-            </a>
-            
-        </div>
-    </section>
-    
-    <section id="contact" class="hidden">
-        <h2>Contact</h2>
-        
-        <div class="contact">
-            
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <textarea rows="5" placeholder="Message"></textarea>
-            
-            <button>Send</button>
-            
-        </div>
-    </section>
-    
-    <footer style="text-align: center; padding: 25px; background: #111a2e; color: #94a3b8; font-size: 14px; border-top: 1px solid rgba(56,189,248,0.1);">
-        <p>© 2026 Abdulrahman Mahmoud. All rights reserved. | <a href="privacy.html" style="color: #38bdf8; text-decoration: none;">Privacy Policy</a></p>
-    </footer>
-    
-    
-    <script>
-        
-        /* THEME */
-        function toggleTheme(){
-            document.body.classList.toggle("light");
-        }
-        
-        /* LANGUAGE */
-        let lang = "en";
-        
-        function toggleLang(){
-            if(lang === "en"){
-                lang = "ar";
-                
-                document.getElementById("title").innerHTML =
-                "مرحبًا، أنا <span id='nameSpan'>عبدالرحمن محمود</span>";
-                
-                document.getElementById("subtitle").innerText =
-                "محلل بيانات | مطور | حلّال مشاكل";
-                
-                document.getElementById("aboutTitle").innerText = "نبذة عني";
-                document.getElementById("linksTitle").innerText = "تابعني";
-                
-                document.getElementById("aboutText").innerText =
-                "أنا محلل بيانات أعمل على تحويل البيانات إلى رؤى باستخدام الأدوات التحليلية.";
-                
-            } else {
-                location.reload();
+
+<script>
+
+/* THEME */
+function toggleTheme(){
+    document.body.classList.toggle("light");
+}
+
+/* LANGUAGE */
+let lang = "en";
+
+function toggleLang(){
+    if(lang === "en"){
+        lang = "ar";
+
+        // تم تعديل النص ليناسب السطر الواحد
+        document.getElementById("title").innerHTML =
+        "مرحبًا، أنا <span id='nameSpan'>عبدالرحمن محمود</span>";
+
+        document.getElementById("subtitle").innerText =
+        "محلل بيانات | مطور | حلّال مشاكل";
+
+        document.getElementById("aboutTitle").innerText = "نبذة عني";
+        document.getElementById("linksTitle").innerText = "تابعني";
+
+        document.getElementById("aboutText").innerText =
+        "أنا محلل بيانات أعمل على تحويل البيانات إلى رؤى باستخدام الأدوات التحليلية.";
+
+    } else {
+        location.reload();
+    }
+}
+
+/* scroll animation */
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting) {
+            e.target.classList.add("show");
+            if (e.target.id === 'home') {
+                e.target.classList.add('animate-welcome');
             }
         }
-        
-        /* scroll animation */
-        const observer = new IntersectionObserver(entries=>{
-            entries.forEach(e=>{
-                if(e.isIntersecting) {
-                    e.target.classList.add("show");
-                    if (e.target.id === 'home') {
-                        e.target.classList.add('animate-welcome');
-                    }
-                }
-            });
+    });
+});
+
+document.querySelectorAll(".hidden, .hero").forEach(el=>{
+    observer.observe(el);
+});
+
+// تأكيد تشغيل حركة الـ Hero عند التحميل
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.getElementById('home').classList.add('animate-welcome');
+    }, 100); // تأخير بسيط لضمان سلاسة الحركة
+});
+
+const cards = document.querySelectorAll("#projects .card");
+
+cards.forEach(card=>{
+    card.addEventListener("mouseenter", ()=>{
+        cards.forEach(c=>{
+            if(c !== card){
+                c.classList.add("project-dim");
+            }
         });
-        
-        document.querySelectorAll(".hidden, .hero").forEach(el=>{
-            observer.observe(el);
+    });
+
+    card.addEventListener("mouseleave", ()=>{
+        cards.forEach(c=>{
+            c.classList.remove("project-dim");
         });
-        
-        window.addEventListener('load', () => {
-            document.getElementById('home').classList.add('animate-welcome');
-        });
-        
-        const cards = document.querySelectorAll("#projects .card");
-        
-        cards.forEach(card=>{
-            card.addEventListener("mouseenter", ()=>{
-                cards.forEach(c=>{
-                    if(c !== card){
-                        c.classList.add("project-dim");
-                    }
-                });
-            });
-            
-            card.addEventListener("mouseleave", ()=>{
-                cards.forEach(c=>{
-                    c.classList.remove("project-dim");
-                });
-            });
-        });
-        
-    </script>
-    
+    });
+});
+
+</script>
+
 </body>
-</html>
+    </html>
+    
