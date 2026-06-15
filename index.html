@@ -90,7 +90,7 @@ nav a:hover{
     color:#000;
 }
 
-/* HERO - التفاعلي الترحيبي (الأنيميشن) */
+/* HERO - التعديل الجديد للأنيميشن */
 .hero{
     height:100vh;
     display:flex;
@@ -101,44 +101,50 @@ nav a:hover{
     padding:20px;
 }
 
-/* الأنيميشن الأساسي: ظهور تدريجي مع تموج خفيف */
+/* أنيميشن النص الرئيسي يبدأ أبيض بالكامل */
 @keyframes welcomeWave {
     0% {
         opacity: 0;
         transform: translateY(30px);
-        color: var(--accent); /* وميض أزرق ناعم في البداية */
-        text-shadow: 0 0 10px rgba(56,189,248,0.7);
-    }
-    60% {
-        opacity: 1;
-        transform: translateY(-5px);
-        color: var(--accent);
-        text-shadow: 0 0 20px rgba(56,189,248,1);
     }
     100% {
         opacity: 1;
         transform: translateY(0);
-        color: var(--text); /* العودة للون الأساسي */
-        text-shadow: none;
     }
 }
 
 .hero h1{
     font-size:52px;
-    opacity: 0; /* يبدأ مخفي */
+    color: #ffffff; /* النص الأساسي أبيض دائماً */
+    opacity: 0;
 }
 
-/* تطبيق الأنيميشن على العناوين عند فتح الصفحة */
 .hero.animate-welcome h1 {
-    animation: welcomeWave 1.4s ease-out forwards;
-    animation-delay: 0.2s; /* تأخير بسيط جداً */
+    animation: welcomeWave 1.2s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+/* أنيميشن الاسم ليتحول إلى الأزرق في النهاية */
+@keyframes nameColorShift {
+    0% {
+        color: #ffffff; /* يبدأ أبيض مع بقية النص */
+    }
+    100% {
+        color: var(--accent); /* يتحول للأزرق */
+    }
 }
 
 .hero h1 span{
-    color:var(--accent);
+    color: #ffffff; /* يبدأ أبيض */
+    display: inline-block;
 }
 
-/* أنيميشن مخصص للسطر الثاني لإكمال التأثير التموجي */
+.hero.animate-welcome h1 span {
+    animation: nameColorShift 0.8s ease-out forwards;
+    animation-delay: 1.2s; /* يبدأ التحول بعد ظهور النص بالكامل */
+}
+
+/* أنيميشن السطر الثاني والزر */
 @keyframes subtitleFade {
     0% {
         opacity: 0;
@@ -153,15 +159,14 @@ nav a:hover{
 .hero p{
     color:var(--muted);
     margin-top:10px;
-    opacity: 0; /* يبدأ مخفي */
+    opacity: 0;
 }
 
 .hero.animate-welcome p {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 1.2s; /* يظهر بعد العنوان الرئيسي */
+    animation-delay: 1.4s;
 }
 
-/* CV - الحفاظ على التفاعل */
 .cv-btn{
     display:inline-block;
     margin-top:20px;
@@ -172,19 +177,19 @@ nav a:hover{
     font-weight:700;
     text-decoration:none;
     transition:0.3s;
-    opacity: 0; /* يبدأ مخفي */
+    opacity: 0;
 }
 
 .hero.animate-welcome .cv-btn {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 1.6s; /* يظهر الأخير */
+    animation-delay: 1.8s;
 }
 
 .cv-btn:hover{
     transform:scale(1.08);
 }
 
-/* SECTIONS (UNCHANGED) */
+/* SECTIONS */
 section{
     padding:90px 20px;
     max-width:1000px;
@@ -201,7 +206,7 @@ h2{
     line-height:1.7;
 }
 
-/* SKILLS (UNCHANGED) */
+/* SKILLS */
 .skills{
     display:flex;
     flex-wrap:wrap;
@@ -221,7 +226,7 @@ h2{
     box-shadow:0 0 15px rgba(56,189,248,0.3);
 }
 
-/* PROJECTS (UNCHANGED) */
+/* PROJECTS */
 .projects{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -281,7 +286,7 @@ h2{
     margin-top:8px;
 }
 
-/* CONTACT (UNCHANGED) */
+/* CONTACT */
 .contact{
     display:flex;
     flex-direction:column;
@@ -306,7 +311,6 @@ button{
     border-radius:8px;
 }
 
-/* fade-in لأقسام السكرول (الحفاظ عليها) */
 .hidden{opacity:0;transform:translateY(30px);transition:0.7s}
 .show{opacity:1;transform:translateY(0)}
 
@@ -331,7 +335,7 @@ button{
     transform:translateY(-3px);
 }
 
-/* MEDIA QUERIES (الحفاظ على تصغير الجوال والوزنيات) */
+/* MEDIA QUERIES */
 @media (max-width: 600px) {
     nav {
         padding: 10px 12px;
@@ -480,7 +484,7 @@ button{
 </nav>
 
 <section class="hero" id="home">
-    <h1 id="title">Hi, I'm <span>Abdulrahman Mahmoud</span></h1>
+    <h1 id="title">Hi, I'm <span id="nameSpan">Abdulrahman Mahmoud</span></h1>
     <p id="subtitle">Data Analyst | Developer | Problem Solver</p>
 
     <a class="cv-btn" href="#">Download CV</a>
@@ -618,7 +622,7 @@ function toggleLang(){
         lang = "ar";
 
         document.getElementById("title").innerHTML =
-        "مرحبًا، أنا <span>عبدالرحمن محمود</span>";
+        "مرحبًا، أنا <span id='nameSpan'>عبدالرحمن محمود</span>";
 
         document.getElementById("subtitle").innerText =
         "محلل بيانات | مطور | حلّال مشاكل";
@@ -639,7 +643,6 @@ const observer = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
         if(e.isIntersecting) {
             e.target.classList.add("show");
-            // تفعيل أنيميشن الترحيب في الهيرو عند ظهوره
             if (e.target.id === 'home') {
                 e.target.classList.add('animate-welcome');
             }
@@ -647,12 +650,10 @@ const observer = new IntersectionObserver(entries=>{
     });
 });
 
-// مراقبة جميع الأقسام المخفية + الهيرو
 document.querySelectorAll(".hidden, .hero").forEach(el=>{
     observer.observe(el);
 });
 
-// تفعيل أنيميشن الترحيب فورياً عند تحميل الصفحة إذا لم يكتشفه الـ Observer بسرعة
 window.addEventListener('load', () => {
     document.getElementById('home').classList.add('animate-welcome');
 });
