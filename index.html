@@ -50,7 +50,7 @@ body{
     transition:0.4s ease;
 }
 
-/* NAV */
+/* NAV - العودة للتصميم الأصلي تماماً */
 nav{
     position:fixed;
     top:0;
@@ -98,7 +98,7 @@ nav a:hover{
     color:#000;
 }
 
-/* HERO - التفاعلي المطور ليتوافق مع الثيمين */
+/* HERO */
 .hero{
     height:100vh;
     display:flex;
@@ -113,6 +113,20 @@ nav a:hover{
 .hero h1 span {
     display: block;
     white-space: nowrap;
+}
+
+/* تنسيق أزرار التحكم تحت الاسم في صف واحد */
+.hero-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+    opacity: 0;
+}
+
+.hero.animate-welcome .hero-controls {
+    animation: subtitleFade 1s ease-out forwards;
+    animation-delay: 2.2s;
 }
 
 /* الأنيميشن الأول: الوميض الشامل المتوافق مع اللون الداكن والفاتح */
@@ -368,44 +382,14 @@ button{
     transform:translateY(-3px);
 }
 
-/* MEDIA QUERIES - تحسين متقن لعرض الموبايل والقوائم */
+/* MEDIA QUERIES */
 @media (max-width: 600px) {
     nav {
-        padding: 12px 16px;
-        flex-direction: column;
-        gap: 12px;
-        background: rgba(11, 18, 32, 0.95);
-    }
-    body.light nav {
-        background: rgba(248, 250, 252, 0.95);
-    }
-    nav .brand-line {
-        display: flex;
-        align-items: center;
+        padding: 15px 20px;
+        flex-direction: row;
         justify-content: space-between;
-        width: 100%;
     }
-    nav b {
-        font-size: 18px;
-    }
-    nav .btn {
-        padding: 5px 10px;
-        font-size: 12px;
-        margin-left: 5px;
-        border-radius: 6px;
-    }
-    nav .nav-links {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 10px;
-        width: 100%;
-    }
-    nav a {
-        margin: 0 4px;
-        font-size: 13px;
-    }
-
+    
     section {
         padding: 40px 16px;
     }
@@ -502,14 +486,7 @@ button{
 <body>
 
 <nav>
-    <div class="brand-line">
-        <b>Abdulrahman</b>
-        <div>
-            <button class="btn" onclick="toggleTheme()">Theme</button>
-            <button class="btn" onclick="toggleLang()">AR / EN</button>
-        </div>
-    </div>
-
+    <b>Abdulrahman</b>
     <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -523,6 +500,11 @@ button{
 <section class="hero" id="home">
     <h1 id="title">Hi, I'm <span id="nameSpan">Abdulrahman Mahmoud</span></h1>
     <p id="subtitle">Data Analyst | Developer | Problem Solver</p>
+    
+    <div class="hero-controls">
+        <button class="btn" onclick="toggleTheme()">Theme</button>
+        <button class="btn" onclick="toggleLang()">AR / EN</button>
+    </div>
 
     <a class="cv-btn" href="#">Download CV</a>
 </section>
