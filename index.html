@@ -269,84 +269,124 @@ button{
 }
 
 /* --------------------------------------------------- */
-/* التعديل الجديد لإصلاح واجهة الجوال وإعادة ترتيب القائمة */
+/* وزنية شاشات الجوال - تصغير إضافي وإحكام للواجهة */
 /* --------------------------------------------------- */
 @media (max-width: 600px) {
     nav {
-        padding: 10px 12px;
-        flex-direction: column;
-        gap: 12px;
-        background: rgba(11, 18, 32, 0.95);
+        padding: 8px 10px;
+        gap: 8px;
+        background: rgba(11, 18, 32, 0.96);
     }
     body.light nav {
-        background: rgba(248, 250, 252, 0.95);
+        background: rgba(248, 250, 252, 0.96);
     }
     
-    /* سطر الاسم والأزرار في الموبايل */
+    /* تصغير السطر العلوي لضمان البقاء في سطر واحد */
     nav .brand-line {
         display: flex;
         align-items: center;
         justify-content: flex-start;
         width: 100%;
-        gap: 8px;
+        gap: 4px;
     }
     
+    /* تصغير حجم الاسم لمنع نزوله */
     nav b {
-        font-size: 16px;
+        font-size: 13px;
+        white-space: nowrap;
     }
 
-    /* الأزرار بجانب الاسم مباشرة */
+    /* تصغير حجم الأزرار لتتناسب مع الاسم */
     nav .btn {
-        padding: 4px 8px;
-        font-size: 11px;
+        padding: 3px 6px;
+        font-size: 10px;
         margin-left: 0px;
-        border-radius: 6px;
+        border-radius: 5px;
+        white-space: nowrap;
     }
     
-    /* إعادة قائمة الروابط لتكون بالأسفل كما في الصورة الثانية */
+    /* تصغير روابط الصفحات وتوزيعها بشكل ملموم */
     nav .nav-links {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 4px;
         width: 100%;
     }
     nav a {
-        margin: 0 3px;
-        font-size: 11px;
+        margin: 0 2px;
+        font-size: 10px;
     }
     
+    /* تصغير حجم الأقسام لتبدو ملمومة */
     section {
-        padding: 40px 12px;
+        padding: 25px 10px;
     }
+    
+    /* وزنية الـ Hero والخطوط الأساسية للموبايل */
     .hero {
-        padding-top: 130px;
+        padding-top: 110px;
+        height: auto;
+        min-height: 80vh;
     }
     .hero h1 {
-        font-size: 32px;
+        font-size: 24px;
     }
     .hero p {
-        font-size: 14px;
+        font-size: 12px;
+        margin-top: 6px;
     }
-    .skills {
-        gap: 6px;
-    }
-    .skill {
-        padding: 6px 10px;
+    .cv-btn {
+        margin-top: 15px;
+        padding: 8px 12px;
         font-size: 12px;
     }
+    
+    h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+    .about {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* تصغير المهارات */
+    .skills {
+        gap: 5px;
+    }
+    .skill {
+        padding: 4px 8px;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+    
+    /* تصغير كروت المشاريع لتظهر بشكل ممتاز وشاشات الجوال */
     .projects {
-        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-        gap: 8px;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 6px;
     }
     .card {
-        padding: 12px;
+        padding: 10px;
+        border-radius: 10px;
     }
     .card h3 {
-        font-size: 14px;
+        font-size: 13px;
     }
     .card p {
         font-size: 11px;
+        margin-top: 4px;
+    }
+    
+    /* تصغير حقول الإدخال */
+    input, textarea {
+        padding: 8px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+    button {
+        padding: 8px;
+        font-size: 13px;
     }
 }
 </style>
