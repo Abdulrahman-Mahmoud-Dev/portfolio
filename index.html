@@ -269,42 +269,47 @@ button{
 }
 
 /* --------------------------------------------------- */
-/* التعديل الجديد والمستقل تماماً الخاص بشاشات الجوال فقط */
+/* التعديل الجديد لإصلاح واجهة الجوال وإعادة ترتيب القائمة */
 /* --------------------------------------------------- */
 @media (max-width: 600px) {
     nav {
         padding: 10px 12px;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 12px;
         background: rgba(11, 18, 32, 0.95);
     }
     body.light nav {
         background: rgba(248, 250, 252, 0.95);
     }
     
-    /* جعل الاسم والأزرار في سطر واحد على الموبايل */
-    nav > div:first-child {
+    /* سطر الاسم والأزرار في الموبايل */
+    nav .brand-line {
         display: flex;
         align-items: center;
-        gap: 6px;
+        justify-content: flex-start;
+        width: 100%;
+        gap: 8px;
     }
     
-    /* نقل الأزرار لتصبح بجانب الاسم مباشرة */
+    nav b {
+        font-size: 16px;
+    }
+
+    /* الأزرار بجانب الاسم مباشرة */
     nav .btn {
-        padding: 3px 6px;
-        font-size: 10px;
-        margin-left: 2px;
-        display: inline-block;
+        padding: 4px 8px;
+        font-size: 11px;
+        margin-left: 0px;
+        border-radius: 6px;
     }
     
-    /* روابط القائمة المتبقية أسفل الهيدر أو منسقة بشكل مصغر */
+    /* إعادة قائمة الروابط لتكون بالأسفل كما في الصورة الثانية */
     nav .nav-links {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 4px;
-        width: auto;
+        gap: 6px;
+        width: 100%;
     }
     nav a {
         margin: 0 3px;
@@ -315,10 +320,10 @@ button{
         padding: 40px 12px;
     }
     .hero {
-        padding-top: 100px;
+        padding-top: 130px;
     }
     .hero h1 {
-        font-size: 28px;
+        font-size: 32px;
     }
     .hero p {
         font-size: 14px;
@@ -350,7 +355,7 @@ button{
 <body>
 
 <nav>
-    <div>
+    <div class="brand-line">
         <b>Abdulrahman</b>
         <button class="btn" onclick="toggleTheme()">Theme</button>
         <button class="btn" onclick="toggleLang()">AR / EN</button>
