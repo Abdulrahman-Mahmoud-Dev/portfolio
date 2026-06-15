@@ -46,7 +46,6 @@ body{
     background:var(--bg);
     color:var(--text);
     transition:0.4s ease;
-    -webkit-text-size-adjust: 100%;
 }
 
 /* NAV */
@@ -56,50 +55,34 @@ nav{
     width:100%;
     display:flex;
     justify-content:space-between;
-    align-items:center;
     padding:15px 25px;
     background:rgba(0,0,0,0.25);
     backdrop-filter:blur(10px);
-    -webkit-backdrop-filter:blur(10px);
     z-index:1000;
-}
-
-nav .nav-brand{
-    font-weight:800;
-    flex-shrink: 0;
-}
-
-nav .nav-links{
-    display:flex;
-    align-items:center;
-    flex-wrap:wrap;
-    justify-content:flex-end;
-    gap:4px;
 }
 
 nav a{
     color:var(--text);
-    margin:0 6px;
+    margin:0 8px;
     text-decoration:none;
     font-weight:500;
     transition:0.3s;
-    font-size:14px;
 }
 
 nav a:hover{
     color:var(--accent);
-    transform:scale(1.05);
+    transform:scale(1.1);
 }
 
 .btn{
     cursor:pointer;
-    padding:5px 8px;
+    padding:6px 10px;
     border-radius:8px;
     border:1px solid var(--accent);
     background:transparent;
     color:var(--text);
+    margin-left:8px;
     transition:0.3s;
-    font-size:12px;
 }
 
 .btn:hover{
@@ -109,18 +92,17 @@ nav a:hover{
 
 /* HERO */
 .hero{
-    min-height:100vh;
+    height:100vh;
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:80px 20px 40px 20px;
+    padding:20px;
 }
 
 .hero h1{
-    font-size:clamp(32px, 6vw, 52px);
-    line-height:1.2;
+    font-size:52px;
 }
 
 .hero span{
@@ -129,15 +111,14 @@ nav a:hover{
 
 .hero p{
     color:var(--muted);
-    margin-top:12px;
-    font-size:clamp(16px, 4vw, 20px);
+    margin-top:10px;
 }
 
 /* CV */
 .cv-btn{
     display:inline-block;
-    margin-top:24px;
-    padding:12px 24px;
+    margin-top:20px;
+    padding:10px 15px;
     border-radius:10px;
     background:var(--accent);
     color:#000;
@@ -147,26 +128,24 @@ nav a:hover{
 }
 
 .cv-btn:hover{
-    transform:scale(1.05);
+    transform:scale(1.08);
 }
 
 /* SECTIONS */
 section{
-    padding:80px 20px;
+    padding:90px 20px;
     max-width:1000px;
     margin:auto;
 }
 
 h2{
     color:var(--accent);
-    margin-bottom:24px;
-    font-size:28px;
+    margin-bottom:20px;
 }
 
 .about{
     color:var(--muted);
     line-height:1.7;
-    font-size:16px;
 }
 
 /* SKILLS */
@@ -178,23 +157,22 @@ h2{
 
 .skill{
     background:var(--card);
-    padding:8px 14px;
+    padding:10px 14px;
     border-radius:10px;
     transition:0.3s;
     cursor:pointer;
-    font-size:14px;
 }
 
 .skill:hover{
-    transform:translateY(-4px);
-    box-shadow:0 5px 15px rgba(56,189,248,0.2);
+    transform:translateY(-6px) scale(1.05);
+    box-shadow:0 0 15px rgba(56,189,248,0.3);
 }
 
 /* PROJECTS */
 .projects{
     display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-    gap:16px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
 }
 
 #links a{
@@ -203,14 +181,14 @@ h2{
 }
 
 #links a:hover{
-    transform:translateY(-4px);
+    transform:translateY(-6px) scale(1.05);
     border:1px solid var(--accent);
-    box-shadow:0 5px 15px rgba(56,189,248,0.2);
+    box-shadow:0 0 15px rgba(56,189,248,0.3);
 }
 
 .card{
     background:var(--card);
-    padding:20px;
+    padding:18px;
     border-radius:14px;
     transition:0.3s;
     cursor:pointer;
@@ -222,20 +200,19 @@ h2{
     transition:0.3s ease;
 }
 
-.card:hover{
-    transform:translateY(-5px);
-    border:1px solid var(--accent);
-    box-shadow:0 5px 15px rgba(56,189,248,0.15);
+.card{
+    transition:0.3s ease;
 }
 
-.card h3{
-    font-size:18px;
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+    border:1px solid var(--accent);
+    box-shadow:0 0 20px rgba(56,189,248,0.2);
 }
 
 .card p{
     color:var(--muted);
     margin-top:8px;
-    font-size:14px;
 }
 
 /* CONTACT */
@@ -247,26 +224,24 @@ h2{
 
 input,textarea{
     width:100%;
-    padding:12px;
+    padding:10px;
     border-radius:8px;
     border:none;
     background:var(--card);
     color:var(--text);
-    font-size:16px;
 }
 
 button{
-    padding:12px;
+    padding:10px;
     border:none;
     background:var(--accent);
     font-weight:700;
     cursor:pointer;
     border-radius:8px;
-    font-size:16px;
 }
 
 /* fade */
-.hidden{opacity:0;transform:translateY(20px);transition:0.6s ease-out}
+.hidden{opacity:0;transform:translateY(30px);transition:0.7s}
 .show{opacity:1;transform:translateY(0)}
 
 #contact input,
@@ -275,56 +250,84 @@ button{
     transition:0.25s ease;
 }
 
+/* Hover بسيط بدون إضاءة */
 #contact input:hover,
 #contact textarea:hover{
     transform:translateY(-2px);
 }
 
+/* عند التركيز */
 #contact input:focus,
 #contact textarea:focus{
     outline:none;
     transform:translateY(-2px);
 }
 
+/* زر الإرسال */
 #contact button:hover{
-    transform:translateY(-2px);
+    transform:translateY(-3px);
 }
 
-/* RESPONSIVE MEDIA QUERIES FOR MOBILE DEVICES */
-@media (max-width: 768px) {
-    nav{
-        padding:12px 15px;
+/* --------------------------------------------------- */
+/* التعديل الجديد والمستقل تماماً الخاص بشاشات الجوال فقط */
+/* --------------------------------------------------- */
+@media (max-width: 600px) {
+    nav {
+        padding: 10px;
         flex-direction: column;
-        gap: 10px;
-        background:rgba(11, 18, 32, 0.9);
+        gap: 8px;
+        background: rgba(11, 18, 32, 0.95);
     }
-    
-    body.light nav{
-        background:rgba(248, 250, 252, 0.9);
+    body.light nav {
+        background: rgba(248, 250, 252, 0.95);
     }
-
-    nav .nav-links{
-        justify-content:center;
+    nav .nav-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px;
         width: 100%;
+    }
+    nav a {
+        margin: 0 4px;
+        font-size: 12px;
+    }
+    .btn {
+        padding: 3px 5px;
+        font-size: 10px;
+        margin-left: 4px;
+    }
+    section {
+        padding: 40px 12px;
+    }
+    .hero {
+        padding-top: 100px;
+    }
+    .hero h1 {
+        font-size: 28px;
+    }
+    .hero p {
+        font-size: 14px;
+    }
+    .skills {
+        gap: 6px;
+    }
+    .skill {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+    .projects {
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
         gap: 8px;
     }
-
-    nav a{
-        margin:0 4px;
-        font-size:13px;
+    .card {
+        padding: 12px;
     }
-    
-    .btn{
-        padding:4px 6px;
-        font-size:11px;
+    .card h3 {
+        font-size: 14px;
     }
-
-    section{
-        padding:60px 15px;
-    }
-    
-    .hero{
-        padding-top: 120px;
+    .card p {
+        font-size: 11px;
     }
 }
 </style>
@@ -333,7 +336,7 @@ button{
 <body>
 
 <nav>
-    <div class="nav-brand">Abdulrahman</div>
+    <div><b>Abdulrahman</b></div>
 
     <div class="nav-links">
         <a href="#home">Home</a>
@@ -344,7 +347,7 @@ button{
         <a href="#contact">Contact</a>
 
         <button class="btn" onclick="toggleTheme()">Theme</button>
-        <button class="btn" onclick="toggleLang()">AR/EN</button>
+        <button class="btn" onclick="toggleLang()">AR / EN</button>
     </div>
 </nav>
 
@@ -487,10 +490,13 @@ button{
     <h2>Contact</h2>
 
     <div class="contact">
+
         <input type="text" placeholder="Name">
         <input type="email" placeholder="Email">
         <textarea rows="5" placeholder="Message"></textarea>
+
         <button>Send</button>
+
     </div>
 </section>
     
@@ -500,12 +506,13 @@ button{
     
 
 <script>
-/* THEME */
+
+/* THEME (UNCHANGED) */
 function toggleTheme(){
     document.body.classList.toggle("light");
 }
 
-/* LANGUAGE */
+/* LANGUAGE (UNCHANGED LOGIC) */
 let lang = "en";
 
 function toggleLang(){
@@ -528,7 +535,7 @@ function toggleLang(){
     }
 }
 
-/* scroll animation */
+/* scroll animation (UNCHANGED) */
 const observer = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
         if(e.isIntersecting) e.target.classList.add("show");
@@ -556,7 +563,9 @@ cards.forEach(card=>{
         });
     });
 });
+
 </script>
 
 </body>
-</html>
+                </html>
+                
