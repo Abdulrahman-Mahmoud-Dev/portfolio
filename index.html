@@ -215,22 +215,51 @@ nav a:hover{
     animation-delay: 2s; 
 }
 
+.brand-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.brand-role {
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.cv-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    opacity: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero.animate-welcome .cv-btns {
+    animation: subtitleFade 1s ease-out forwards;
+    animation-delay: 2.4s;
+}
+
 .cv-btn{
     display:inline-block;
-    margin-top:20px;
-    padding:10px 15px;
+    padding:10px 18px;
     border-radius:10px;
     background:var(--accent);
     color:#000;
     font-weight:700;
     text-decoration:none;
     transition:0.3s;
-    opacity: 0; 
 }
 
-.hero.animate-welcome .cv-btn {
-    animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 2.4s; 
+.cv-btn-outline {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+}
+
+body.light .cv-btn-outline {
+    color: var(--accent);
 }
 
 .cv-btn:hover{
@@ -535,11 +564,14 @@ button{
 </style>
 </head>
 
-<body>
+<body class="light">
 
 <nav>
     <div class="brand-line">
-        <b>Abdulrahman</b>
+        <div class="brand-info">
+            <b id="navName">Abdulrahman Mahmoud</b>
+            <span class="brand-role" id="navRole">Data Analyst</span>
+        </div>
         <div>
             <button class="btn" onclick="toggleTheme()">Theme</button>
             <button class="btn" onclick="toggleLang()">AR / EN</button>
@@ -561,7 +593,10 @@ button{
     <div class="hero-greeting" id="greetingLine">Hi, I'm</div>
     <div class="hero-name" id="nameLine">Abdulrahman Mahmoud</div>
     <p id="subtitle">Data Analyst | Developer | Problem Solver</p>
-    <a class="cv-btn" href="CV-Abdulrahman_Mahmoud.pdf" download>Download CV</a>
+    <div class="cv-btns">
+        <a class="cv-btn" href="CV-Abdulrahman_Mahmoud.pdf" download>⬇ Download CV</a>
+        <a class="cv-btn cv-btn-outline" href="CV-Abdulrahman_Mahmoud.pdf" target="_blank">👁 View CV</a>
+    </div>
 </section>
 
 <section id="about" class="hidden">
@@ -692,6 +727,8 @@ function toggleLang(){
 
         document.getElementById("greetingLine").innerText = "مرحبًا، أنا";
         document.getElementById("nameLine").innerText = "عبدالرحمن محمود";
+        document.getElementById("navName").innerText = "عبدالرحمن محمود";
+        document.getElementById("navRole").innerText = "محلل بيانات";
 
         document.getElementById("subtitle").innerText =
         "محلل بيانات | مطور | حلّال مشاكل";
