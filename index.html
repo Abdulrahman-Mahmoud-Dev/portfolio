@@ -332,6 +332,14 @@ h2{
     gap: 12px;
     justify-content: flex-start;
     align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+}
+
+.social-container::-webkit-scrollbar {
+    display: none;
 }
 
 .social-icon {
@@ -792,10 +800,4 @@ window.addEventListener('load', () => {
     document.getElementById('home').classList.add('animate-welcome');
 });
 
-const cards = document.querySelectorAll("#projects .card");
-
-cards.forEach(card=>{
-    card.addEventListener("mouseenter", ()=>{
-        cards.forEach(c=>{
-            if(c !== card){
-                c.classLis
+const cards = document.querySelector
