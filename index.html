@@ -24,8 +24,7 @@
     --text:#e5e7eb;
     --muted:#94a3b8;
     --accent:#38bdf8;
-    --glow: rgba(56, 189, 248, 0.4);
-    --profile-border: rgba(255, 255, 255, 0.1);
+    --glow: rgba(255, 255, 255, 0.8);
 }
 
 body.light{
@@ -34,8 +33,7 @@ body.light{
     --text:#0f172a;
     --muted:#475569;
     --accent:#0ea5e9;
-    --glow: rgba(14, 165, 233, 0.2);
-    --profile-border: rgba(0, 0, 0, 0.05);
+    --glow: rgba(15, 23, 42, 0.6);
 }
 
 *{
@@ -58,8 +56,8 @@ nav{
     top:0;
     width:100%;
     display:flex;
-    flex-direction:column;
-    gap:10px;
+    justify-content:space-between;
+    align-items:center;
     padding:15px 25px;
     background:rgba(0,0,0,0.25);
     backdrop-filter:blur(10px);
@@ -71,36 +69,28 @@ body.light nav {
     background: rgba(255, 255, 255, 0.25);
 }
 
-.nav-top-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: nowrap;
+nav a{
+    color:var(--text);
+    margin:0 8px;
+    text-decoration:none;
+    font-weight:500;
+    transition:0.3s;
 }
 
-nav b {
-    font-size: 20px;
-    font-weight: 800;
-    white-space: nowrap;
-}
-
-.nav-buttons {
-    display: flex;
-    gap: 8px;
-    flex-wrap: nowrap;
+nav a:hover{
+    color:var(--accent);
+    transform:scale(1.1);
 }
 
 .btn{
     cursor:pointer;
-    padding:6px 12px;
+    padding:6px 10px;
     border-radius:8px;
     border:1px solid var(--accent);
     background:transparent;
     color:var(--text);
+    margin-left:8px;
     transition:0.3s;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
 }
 
 .btn:hover{
@@ -108,34 +98,7 @@ nav b {
     color:#000;
 }
 
-.nav-links-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    overflow-x: auto;
-    white-space: nowrap;
-    width: 100%;
-    scrollbar-width: none;
-}
-
-.nav-links-row::-webkit-scrollbar {
-    display: none;
-}
-
-nav a{
-    color:var(--text);
-    text-decoration:none;
-    font-weight:500;
-    transition:0.3s;
-    font-size: 14px;
-}
-
-nav a:hover{
-    color:var(--accent);
-    transform:scale(1.05);
-}
-
-/* HERO - تم تعديل القسم لإضافة الصورة وتنسيق العناصر */
+/* HERO - التفاعلي المطور ليتوافق مع الثيمين */
 .hero{
     height:100vh;
     display:flex;
@@ -146,67 +109,7 @@ nav a:hover{
     padding:20px;
 }
 
-/* نمط الصورة الشخصية - دائرية وصغيرة واحترافية */
-.profile-img-container {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: 1s ease-out 0.2s;
-    margin-bottom: 30px; /* مسافة تحت الصورة */
-    position: relative;
-    border-radius: 50%;
-    padding: 3px;
-    background: linear-gradient(135deg, var(--accent), transparent);
-    box-shadow: 0 10px 30px -10px var(--glow);
-}
-
-/* أنيميشن الدخول للصورة */
-.hero.animate-welcome .profile-img-container {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.profile-img {
-    width: 120px; /* حجم صغير واحترافي للمكتب */
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--card); /* حافة تفصل الصورة */
-    transition: 0.3s ease;
-    display: block;
-}
-
-/* تأثير عند تمرير الماوس على الصورة */
-.profile-img-container:hover .profile-img {
-    transform: scale(1.05);
-    box-shadow: 0 0 30px 5px var(--accent);
-}
-
-/* تأثير Glow إضافي */
-.profile-img-container::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    border-radius: 50%;
-    box-shadow: 0 0 20px 2px var(--accent);
-    opacity: 0;
-    transition: 0.3s;
-}
-
-.profile-img-container:hover::after {
-    opacity: 1;
-}
-
-/* تنسيق النص ليظهر في سطر واحد */
-.hero h1{
-    font-size: 52px;
-    opacity: 0; 
-    color: var(--text);
-    white-space: nowrap; /* منع الالتفاف نهائياً ليبقى الاسم في سطر واحد */
-    overflow: hidden;
-    text-overflow: ellipsis; /* إضافة نقاط إذا زاد الطول جداً على شاشة نادرة */
-    max-width: 90%;
-}
-
+/* الأنيميشن الأول: الوميض الشامل المتوافق مع اللون الداكن والفاتح */
 @keyframes welcomeWaveAndGlow {
     0% {
         opacity: 0;
@@ -228,6 +131,7 @@ nav a:hover{
     }
 }
 
+/* الأنيميشن الثاني: تحول الاسم فقط للأزرق وانصهار الهايلايت */
 @keyframes nameColorShift {
     0% {
         color: var(--text);
@@ -239,16 +143,25 @@ nav a:hover{
     }
 }
 
+.hero h1{
+    font-size:52px;
+    opacity: 0; 
+    color: var(--text); 
+}
+
+/* تطبيق تأثير الوميض الذكي */
 .hero.animate-welcome h1 {
     animation: welcomeWaveAndGlow 1.6s ease-out forwards;
-    animation-delay: 1s; /* تأخير بسيط بعد ظهور الصورة */
+    animation-delay: 0.2s;
 }
 
+/* تطبيق تحول لون الاسم للأزرق بنعومة */
 .hero.animate-welcome h1 span {
     animation: nameColorShift 1s ease-out forwards;
-    animation-delay: 2.6s; /* بعد انتهاء حركة النص الأساسية */
+    animation-delay: 1.8s; 
 }
 
+/* الحفاظ على السطر الثاني والزر كما هو */
 @keyframes subtitleFade {
     0% {
         opacity: 0;
@@ -268,7 +181,7 @@ nav a:hover{
 
 .hero.animate-welcome p {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 2.8s; 
+    animation-delay: 2s; 
 }
 
 .cv-btn{
@@ -286,7 +199,7 @@ nav a:hover{
 
 .hero.animate-welcome .cv-btn {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 3.2s; 
+    animation-delay: 2.4s; 
 }
 
 .cv-btn:hover{
@@ -337,44 +250,32 @@ h2{
     gap:15px;
 }
 
-/* SOCIAL LINKS */
 .social-container {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 16px;
     justify-content: flex-start;
-    overflow: visible;
-    padding: 10px 5px;
 }
 
 .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 42px;
-    height: 42px;
+    width: 50px;
+    height: 50px;
     background: var(--card);
     border-radius: 50%;
     color: var(--text);
     text-decoration: none;
-    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-    border: 2px solid transparent;
-    flex-shrink: 0;
-    box-sizing: border-box;
-}
-
-.social-icon svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
-    transition: none;
+    transition: 0.3s ease;
+    border: 1px solid transparent;
 }
 
 .social-icon:hover {
-    transform: translateY(-4px) scale(1.05);
-    border-color: var(--accent);
-    box-shadow: 0 0 12px rgba(56,189,248,0.4);
-    color: var(--text);
+    transform: translateY(-6px) scale(1.08);
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 15px rgba(56,189,248,0.3);
+    color: var(--accent);
 }
 
 .card{
@@ -427,6 +328,7 @@ button{
     border-radius:8px;
 }
 
+/* fade */
 .hidden{opacity:0;transform:translateY(30px);transition:0.7s}
 .show{opacity:1;transform:translateY(0)}
 
@@ -451,29 +353,41 @@ button{
     transform:translateY(-3px);
 }
 
-/* MEDIA QUERIES - تحديثات للجوال */
+/* MEDIA QUERIES - تحسين متقن لعرض الموبايل والقوائم */
 @media (max-width: 600px) {
     nav {
         padding: 12px 16px;
-        gap: 8px;
+        flex-direction: column;
+        gap: 12px;
         background: rgba(11, 18, 32, 0.95);
     }
     body.light nav {
         background: rgba(248, 250, 252, 0.95);
+    }
+    nav .brand-line {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
     }
     nav b {
         font-size: 18px;
     }
     nav .btn {
         padding: 5px 10px;
-        font-size: 11px;
+        font-size: 12px;
+        margin-left: 5px;
+        border-radius: 6px;
     }
-    
-    .nav-links-row {
-        gap: 12px;
-        justify-content: flex-start;
+    nav .nav-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        width: 100%;
     }
     nav a {
+        margin: 0 4px;
         font-size: 13px;
     }
 
@@ -481,36 +395,17 @@ button{
         padding: 40px 16px;
     }
     
-    /* ضبط قسم الـ Hero للجوال */
     .hero {
-        padding-top: 140px; /* مسافة أكبر لترك مجال للـ Nav المقصوصة */
+        padding-top: 120px;
         height: auto;
-        min-height: 90vh;
-        justify-content: flex-start; /* ترتيب من الأعلى لترك مسافة */
+        min-height: 80vh;
     }
-
-    /* حجم الصورة للجوال - أصغر قليلاً ودائرية تماماً */
-    .profile-img-container {
-        margin-bottom: 20px;
-        padding: 2px;
-    }
-    .profile-img {
-        width: 100px; 
-        height: 100px;
-        border: 3px solid var(--card);
-    }
-
-    /* ضبط حجم الخط للاسم على الجوال ليبقى سطر واحد */
     .hero h1 {
-        font-size: 24px; /* حجم أصغر لضمان السطر الواحد */
+        font-size: 32px;
         line-height: 1.3;
-        white-space: nowrap; /* تأكيد السطر الواحد */
-        max-width: 95%; /* استخدام معظم العرض */
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
     .hero p {
-        font-size: 13px;
+        font-size: 14px;
         margin-top: 8px;
     }
     .cv-btn {
@@ -554,15 +449,15 @@ button{
     }
     
     .social-container {
-        gap: 10px;
+        gap: 12px;
     }
     .social-icon {
-        width: 38px;
-        height: 38px;
+        width: 46px;
+        height: 46px;
     }
     .social-icon svg {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
     }
 
     .contact {
@@ -590,15 +485,15 @@ button{
 <body>
 
 <nav>
-    <div class="nav-top-row">
+    <div class="brand-line">
         <b>Abdulrahman</b>
-        <div class="nav-buttons">
+        <div>
             <button class="btn" onclick="toggleTheme()">Theme</button>
             <button class="btn" onclick="toggleLang()">AR / EN</button>
         </div>
     </div>
 
-    <div class="nav-links-row">
+    <div class="nav-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -609,10 +504,6 @@ button{
 </nav>
 
 <section class="hero" id="home">
-    <div class="profile-img-container">
-        <img src="https://lh3.googleusercontent.com/d/1Xy1mB1H4T6Lp5k9W9k1L1jJ4mZ9m4k1-=" alt="Abdulrahman Mahmoud" class="profile-img">
-    </div>
-
     <h1 id="title">Hi, I'm <span id="nameSpan">Abdulrahman Mahmoud</span></h1>
     <p id="subtitle">Data Analyst | Developer | Problem Solver</p>
 
@@ -679,37 +570,37 @@ button{
     <div class="social-container">
 
         <a href="https://www.linkedin.com/in/abdulrahman-mahmoud-analyst" target="_blank" class="social-icon" title="LinkedIn">
-            <svg viewBox="0 0 24 24">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.2h.1c.6-1.1 2-2.2 4.1-2.2 4.4 0 5.2 2.9 5.2 6.6V24h-5v-7.5c0-1.8 0-4.1-2.5-4.1s-2.9 2-2.9 4V24h-5V8z"/>
             </svg>
         </a>
 
         <a href="https://github.com/Abdulrahman-Mahmoud-Dev" target="_blank" class="social-icon" title="GitHub">
-            <svg viewBox="0 0 24 24">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 .5C5.7.5.7 5.7.7 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.2-1.3-1.5-1.3-1.5-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 .1.8 2.2 3.3 2.2.8 0 1.4-.1 1.8-.3.1-.7.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.4 1.2-3.3-.1-.3-.5-1.6.1-3.3 0 0 1-.3 3.3 1.2 1-.3 2.1-.4 3.2-.4s2.2.1 3.2.4c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 3 .1 3.3.8.9 1.2 2 1.2 3.3 0 4.5-2.7 5.5-5.3 5.8.4.3.9 1 .9 2.1v3.1c0 .3.2.7.8.6A10.7 10.7 0 0 0 23.3 12C23.3 5.7 18.3.5 12 .5z"/>
             </svg>
         </a>
 
         <a href="mailto:awertt699@gmail.com" class="social-icon" title="Email">
-            <svg viewBox="0 0 24 24">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
             </svg>
         </a>
 
         <a href="https://youtube.com/channel/UCLk9npQemT1gmK7tysjXjeg" target="_blank" class="social-icon" title="YouTube">
-            <svg viewBox="0 0 24 24">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.8zM9.5 15.5v-7l6 3.5-6 3.5z"/>
             </svg>
         </a>
 
         <a href="https://www.tiktok.com/@awil_34" target="_blank" class="social-icon" title="TikTok">
-            <svg viewBox="0 0 24 24">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M21 8.5a8.5 8.5 0 0 1-5-1.6v6.5a6.2 6.2 0 1 1-6.2-6.2c.3 0 .6 0 .9.1v3.1a3 3 0 1 0 2.2 2.9V0h3a5.8 5.8 0 0 0 5.1 5.1z"/>
             </svg>
         </a>
 
         <a href="https://www.snapchat.com/add/awil-34" target="_blank" class="social-icon" title="Snapchat">
-            <svg viewBox="0 0 24 24">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2c3 0 5 2 5 5v5c0 2 1 3 3 3v2c-2 0-3 1-3 3-2 0-3 1-5 1s-3-1-5-1c0-2-1-3-3-3v-2c2 0 3-1 3-3V7c0-3 2-5 5-5z"/>
             </svg>
         </a>
@@ -750,7 +641,6 @@ function toggleLang(){
     if(lang === "en"){
         lang = "ar";
 
-        // تم تعديل النص ليناسب السطر الواحد
         document.getElementById("title").innerHTML =
         "مرحبًا، أنا <span id='nameSpan'>عبدالرحمن محمود</span>";
 
@@ -784,11 +674,8 @@ document.querySelectorAll(".hidden, .hero").forEach(el=>{
     observer.observe(el);
 });
 
-// تأكيد تشغيل حركة الـ Hero عند التحميل
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        document.getElementById('home').classList.add('animate-welcome');
-    }, 100); // تأخير بسيط لضمان سلاسة الحركة
+    document.getElementById('home').classList.add('animate-welcome');
 });
 
 const cards = document.querySelectorAll("#projects .card");
@@ -812,5 +699,4 @@ cards.forEach(card=>{
 </script>
 
 </body>
-                </html>
-                
+</html>
