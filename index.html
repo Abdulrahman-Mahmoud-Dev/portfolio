@@ -90,7 +90,7 @@ nav a:hover{
     color:#000;
 }
 
-/* HERO - التعديل الجديد للأنيميشن */
+/* HERO - التفاعلي الترحيبي (الأنيميشن) */
 .hero{
     height:100vh;
     display:flex;
@@ -101,50 +101,59 @@ nav a:hover{
     padding:20px;
 }
 
-/* أنيميشن النص الرئيسي يبدأ أبيض بالكامل */
-@keyframes welcomeWave {
+/* الأنيميشن الأول: الوميض الأبيض الشامل */
+@keyframes welcomeWaveAndGlow {
     0% {
         opacity: 0;
         transform: translateY(30px);
+        color: #ffffff; /* يبدأ أبيض بالكامل */
+        text-shadow: 0 0 10px rgba(255,255,255,0.7); /* الهايلايت الأبيض */
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(-5px);
+        color: #ffffff;
+        text-shadow: 0 0 25px rgba(255,255,255,1); /* ذروة الوميض */
     }
     100% {
         opacity: 1;
         transform: translateY(0);
+        color: #ffffff; /* العودة للأبيض الثابت */
+        text-shadow: 0 0 5px rgba(255,255,255,0.2); /* وميض خفيف جداً يهدأ */
+    }
+}
+
+/* الأنيميشن الثاني: تحول الاسم فقط للأزرق */
+@keyframes nameColorShift {
+    0% {
+        color: #ffffff;
+        text-shadow: 0 0 5px rgba(255,255,255,0.2);
+    }
+    100% {
+        color: var(--accent); /* يتحول للأزرق المميز */
+        text-shadow: none; /* الوميض يذوب */
     }
 }
 
 .hero h1{
     font-size:52px;
-    color: #ffffff; /* النص الأساسي أبيض دائماً */
-    opacity: 0;
-}
-
-.hero.animate-welcome h1 {
-    animation: welcomeWave 1.2s ease-out forwards;
-    animation-delay: 0.2s;
-}
-
-/* أنيميشن الاسم ليتحول إلى الأزرق في النهاية */
-@keyframes nameColorShift {
-    0% {
-        color: #ffffff; /* يبدأ أبيض مع بقية النص */
-    }
-    100% {
-        color: var(--accent); /* يتحول للأزرق */
-    }
-}
-
-.hero h1 span{
+    opacity: 0; /* يبدأ مخفي */
     color: #ffffff; /* يبدأ أبيض */
-    display: inline-block;
 }
 
+/* تطبيق تأثير الوميض الشامل في البداية */
+.hero.animate-welcome h1 {
+    animation: welcomeWaveAndGlow 1.6s ease-out forwards;
+    animation-delay: 0.2s; /* تأخير بسيط جداً */
+}
+
+/* تطبيق تأثير تحول اللون تدريجياً على الاسم فقط */
 .hero.animate-welcome h1 span {
-    animation: nameColorShift 0.8s ease-out forwards;
-    animation-delay: 1.2s; /* يبدأ التحول بعد ظهور النص بالكامل */
+    animation: nameColorShift 1s ease-out forwards;
+    animation-delay: 1.8s; /* يبدأ التحول بعد انتهاء وميض الترحيب الأساسي */
 }
 
-/* أنيميشن السطر الثاني والزر */
+/* الحفاظ على السطر الثاني والزر كما هو */
 @keyframes subtitleFade {
     0% {
         opacity: 0;
@@ -159,12 +168,12 @@ nav a:hover{
 .hero p{
     color:var(--muted);
     margin-top:10px;
-    opacity: 0;
+    opacity: 0; /* يبدأ مخفي */
 }
 
 .hero.animate-welcome p {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 1.4s;
+    animation-delay: 2s; /* يظهر بعد Title */
 }
 
 .cv-btn{
@@ -177,19 +186,19 @@ nav a:hover{
     font-weight:700;
     text-decoration:none;
     transition:0.3s;
-    opacity: 0;
+    opacity: 0; /* يبدأ مخفي */
 }
 
 .hero.animate-welcome .cv-btn {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 1.8s;
+    animation-delay: 2.4s; /* يظهر الأخير */
 }
 
 .cv-btn:hover{
     transform:scale(1.08);
 }
 
-/* SECTIONS */
+/* SECTIONS (UNCHANGED) */
 section{
     padding:90px 20px;
     max-width:1000px;
@@ -206,7 +215,7 @@ h2{
     line-height:1.7;
 }
 
-/* SKILLS */
+/* SKILLS (UNCHANGED) */
 .skills{
     display:flex;
     flex-wrap:wrap;
@@ -226,7 +235,7 @@ h2{
     box-shadow:0 0 15px rgba(56,189,248,0.3);
 }
 
-/* PROJECTS */
+/* PROJECTS (UNCHANGED) */
 .projects{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -286,7 +295,7 @@ h2{
     margin-top:8px;
 }
 
-/* CONTACT */
+/* CONTACT (UNCHANGED) */
 .contact{
     display:flex;
     flex-direction:column;
@@ -311,6 +320,7 @@ button{
     border-radius:8px;
 }
 
+/* fade */
 .hidden{opacity:0;transform:translateY(30px);transition:0.7s}
 .show{opacity:1;transform:translateY(0)}
 
@@ -335,7 +345,7 @@ button{
     transform:translateY(-3px);
 }
 
-/* MEDIA QUERIES */
+/* MEDIA QUERIES (الحفاظ على تصغير الجوال والوزنيات) */
 @media (max-width: 600px) {
     nav {
         padding: 10px 12px;
@@ -679,4 +689,5 @@ cards.forEach(card=>{
 </script>
 
 </body>
-</html>
+                </html>
+                
