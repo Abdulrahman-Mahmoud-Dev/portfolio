@@ -273,30 +273,44 @@ button{
 /* --------------------------------------------------- */
 @media (max-width: 600px) {
     nav {
-        padding: 10px;
-        flex-direction: column;
-        gap: 8px;
+        padding: 10px 12px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
         background: rgba(11, 18, 32, 0.95);
     }
     body.light nav {
         background: rgba(248, 250, 252, 0.95);
     }
+    
+    /* جعل الاسم والأزرار في سطر واحد على الموبايل */
+    nav > div:first-child {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    /* نقل الأزرار لتصبح بجانب الاسم مباشرة */
+    nav .btn {
+        padding: 3px 6px;
+        font-size: 10px;
+        margin-left: 2px;
+        display: inline-block;
+    }
+    
+    /* روابط القائمة المتبقية أسفل الهيدر أو منسقة بشكل مصغر */
     nav .nav-links {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 6px;
-        width: 100%;
+        gap: 4px;
+        width: auto;
     }
     nav a {
-        margin: 0 4px;
-        font-size: 12px;
+        margin: 0 3px;
+        font-size: 11px;
     }
-    .btn {
-        padding: 3px 5px;
-        font-size: 10px;
-        margin-left: 4px;
-    }
+    
     section {
         padding: 40px 12px;
     }
@@ -336,7 +350,11 @@ button{
 <body>
 
 <nav>
-    <div><b>Abdulrahman</b></div>
+    <div>
+        <b>Abdulrahman</b>
+        <button class="btn" onclick="toggleTheme()">Theme</button>
+        <button class="btn" onclick="toggleLang()">AR / EN</button>
+    </div>
 
     <div class="nav-links">
         <a href="#home">Home</a>
@@ -345,9 +363,6 @@ button{
         <a href="#projects">Projects</a>
         <a href="#links">Links</a>
         <a href="#contact">Contact</a>
-
-        <button class="btn" onclick="toggleTheme()">Theme</button>
-        <button class="btn" onclick="toggleLang()">AR / EN</button>
     </div>
 </nav>
 
@@ -567,5 +582,4 @@ cards.forEach(card=>{
 </script>
 
 </body>
-                </html>
-                
+</html>
