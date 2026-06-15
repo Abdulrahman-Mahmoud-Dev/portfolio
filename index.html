@@ -115,6 +115,15 @@ nav a:hover{
     100% { opacity:1; transform:scale(1) translateY(0); }
 }
 
+.hero-photo-wrapper {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    margin-bottom: 18px;
+    opacity: 0;
+    box-shadow: 0 12px 35px rgba(0,0,0,0.35), 0 4px 10px rgba(0,0,0,0.2);
+}
+
 .hero-photo {
     width: 130px;
     height: 130px;
@@ -122,14 +131,12 @@ nav a:hover{
     object-fit: cover;
     object-position: center top;
     border: none;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    -webkit-mask-image: radial-gradient(circle, black 55%, transparent 75%);
-    mask-image: radial-gradient(circle, black 55%, transparent 75%);
-    margin-bottom: 18px;
-    opacity: 0;
+    -webkit-mask-image: radial-gradient(circle, black 58%, transparent 75%);
+    mask-image: radial-gradient(circle, black 58%, transparent 75%);
+    display: block;
 }
 
-.hero.animate-welcome .hero-photo {
+.hero.animate-welcome .hero-photo-wrapper {
     animation: photoAppear 1s ease-out forwards;
     animation-delay: 0s;
 }
@@ -479,6 +486,10 @@ button{
         min-height: 100vh;
     }
 
+    .hero-photo-wrapper {
+        width: 100px;
+        height: 100px;
+    }
     .hero-photo {
         width: 100px;
         height: 100px;
@@ -595,7 +606,9 @@ button{
 </nav>
 
 <section class="hero" id="home">
-    <img src="photo.png" alt="Abdulrahman Mahmoud" class="hero-photo">
+    <div class="hero-photo-wrapper">
+        <img src="photo.png" alt="Abdulrahman Mahmoud" class="hero-photo">
+    </div>
     <div class="hero-greeting" id="greetingLine">Hi, I'm</div>
     <div class="hero-name" id="nameLine">Abdulrahman Mahmoud</div>
     <p id="subtitle">Data Analyst | Developer | Problem Solver</p>
