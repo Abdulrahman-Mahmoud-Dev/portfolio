@@ -50,7 +50,7 @@ body{
     transition:0.4s ease;
 }
 
-/* NAV - التعديل الجديد لترتيب العناصر مثل الصورة المرفقة */
+/* NAV */
 nav{
     position:fixed;
     top:0;
@@ -69,7 +69,6 @@ body.light nav {
     background: rgba(255, 255, 255, 0.25);
 }
 
-/* السطر العلوي: الاسم والأزرار بجانبه */
 .nav-top-row {
     display: flex;
     align-items: center;
@@ -107,7 +106,6 @@ nav b {
     color:#000;
 }
 
-/* السطر السفلي: الروابط مصفوفة بالكامل تحت الاسم والأزرار */
 .nav-links-row {
     display: flex;
     align-items: center;
@@ -115,11 +113,11 @@ nav b {
     overflow-x: auto;
     white-space: nowrap;
     width: 100%;
-    scrollbar-width: none; /* إخفاء شريط التمرير الافتراضي */
+    scrollbar-width: none;
 }
 
 .nav-links-row::-webkit-scrollbar {
-    display: none; /* إخفاء شريط التمرير لجوجل كروم وسفاري */
+    display: none;
 }
 
 nav a{
@@ -287,13 +285,15 @@ h2{
     gap:15px;
 }
 
+/* SOCIAL LINKS - تم إضافة padding-top لمنع انقطاع الدائرة عند الحركة */
 .social-container {
     display: flex;
     flex-wrap: nowrap;
     gap: 10px;
     justify-content: flex-start;
     overflow-x: auto;
-    padding-bottom: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
 .social-icon {
@@ -316,11 +316,12 @@ h2{
     height: 18px;
 }
 
+/* تعديل تأثير الماوس: الحواف فقط زرقاء، الأيقونة تحافظ على لونها الأبيض الأصلي */
 .social-icon:hover {
     transform: translateY(-4px) scale(1.05);
     border: 1px solid var(--accent);
     box-shadow: 0 0 10px rgba(56,189,248,0.3);
-    color: var(--accent);
+    color: var(--text); /* تظل الأيقونة بيضاء كما هي */
 }
 
 .card{
