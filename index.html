@@ -24,6 +24,7 @@
     --text:#e5e7eb;
     --muted:#94a3b8;
     --accent:#38bdf8;
+    --glow: rgba(255, 255, 255, 0.8);
 }
 
 body.light{
@@ -32,6 +33,7 @@ body.light{
     --text:#0f172a;
     --muted:#475569;
     --accent:#0ea5e9;
+    --glow: rgba(15, 23, 42, 0.6);
 }
 
 *{
@@ -55,10 +57,16 @@ nav{
     width:100%;
     display:flex;
     justify-content:space-between;
+    align-items:center;
     padding:15px 25px;
     background:rgba(0,0,0,0.25);
     backdrop-filter:blur(10px);
     z-index:1000;
+    transition: background 0.4s ease;
+}
+
+body.light nav {
+    background: rgba(255, 255, 255, 0.25);
 }
 
 nav a{
@@ -90,7 +98,7 @@ nav a:hover{
     color:#000;
 }
 
-/* HERO - التفاعلي الترحيبي (الأنيميشن) */
+/* HERO - التفاعلي المطور ليتوافق مع الثيمين */
 .hero{
     height:100vh;
     display:flex;
@@ -101,56 +109,56 @@ nav a:hover{
     padding:20px;
 }
 
-/* الأنيميشن الأول: الوميض الأبيض الشامل */
+/* الأنيميشن الأول: الوميض الشامل المتوافق مع اللون الداكن والفاتح */
 @keyframes welcomeWaveAndGlow {
     0% {
         opacity: 0;
         transform: translateY(30px);
-        color: #ffffff; /* يبدأ أبيض بالكامل */
-        text-shadow: 0 0 10px rgba(255,255,255,0.7); /* الهايلايت الأبيض */
+        color: var(--text); 
+        text-shadow: 0 0 10px var(--glow); 
     }
     50% {
         opacity: 1;
         transform: translateY(-5px);
-        color: #ffffff;
-        text-shadow: 0 0 25px rgba(255,255,255,1); /* ذروة الوميض */
+        color: var(--text);
+        text-shadow: 0 0 25px var(--glow); 
     }
     100% {
         opacity: 1;
         transform: translateY(0);
-        color: #ffffff; /* العودة للأبيض الثابت */
-        text-shadow: 0 0 5px rgba(255,255,255,0.2); /* وميض خفيف جداً يهدأ */
+        color: var(--text); 
+        text-shadow: 0 0 5px var(--glow); 
     }
 }
 
-/* الأنيميشن الثاني: تحول الاسم فقط للأزرق */
+/* الأنيميشن الثاني: تحول الاسم فقط للأزرق وانصهار الهايلايت */
 @keyframes nameColorShift {
     0% {
-        color: #ffffff;
-        text-shadow: 0 0 5px rgba(255,255,255,0.2);
+        color: var(--text);
+        text-shadow: 0 0 5px var(--glow);
     }
     100% {
-        color: var(--accent); /* يتحول للأزرق المميز */
-        text-shadow: none; /* الوميض يذوب */
+        color: var(--accent); 
+        text-shadow: none; 
     }
 }
 
 .hero h1{
     font-size:52px;
-    opacity: 0; /* يبدأ مخفي */
-    color: #ffffff; /* يبدأ أبيض */
+    opacity: 0; 
+    color: var(--text); 
 }
 
-/* تطبيق تأثير الوميض الشامل في البداية */
+/* تطبيق تأثير الوميض الذكي */
 .hero.animate-welcome h1 {
     animation: welcomeWaveAndGlow 1.6s ease-out forwards;
-    animation-delay: 0.2s; /* تأخير بسيط جداً */
+    animation-delay: 0.2s;
 }
 
-/* تطبيق تأثير تحول اللون تدريجياً على الاسم فقط */
+/* تطبيق تحول لون الاسم للأزرق بنعومة */
 .hero.animate-welcome h1 span {
     animation: nameColorShift 1s ease-out forwards;
-    animation-delay: 1.8s; /* يبدأ التحول بعد انتهاء وميض الترحيب الأساسي */
+    animation-delay: 1.8s; 
 }
 
 /* الحفاظ على السطر الثاني والزر كما هو */
@@ -168,12 +176,12 @@ nav a:hover{
 .hero p{
     color:var(--muted);
     margin-top:10px;
-    opacity: 0; /* يبدأ مخفي */
+    opacity: 0; 
 }
 
 .hero.animate-welcome p {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 2s; /* يظهر بعد Title */
+    animation-delay: 2s; 
 }
 
 .cv-btn{
@@ -186,19 +194,19 @@ nav a:hover{
     font-weight:700;
     text-decoration:none;
     transition:0.3s;
-    opacity: 0; /* يبدأ مخفي */
+    opacity: 0; 
 }
 
 .hero.animate-welcome .cv-btn {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 2.4s; /* يظهر الأخير */
+    animation-delay: 2.4s; 
 }
 
 .cv-btn:hover{
     transform:scale(1.08);
 }
 
-/* SECTIONS (UNCHANGED) */
+/* SECTIONS */
 section{
     padding:90px 20px;
     max-width:1000px;
@@ -215,7 +223,7 @@ h2{
     line-height:1.7;
 }
 
-/* SKILLS (UNCHANGED) */
+/* SKILLS */
 .skills{
     display:flex;
     flex-wrap:wrap;
@@ -235,7 +243,7 @@ h2{
     box-shadow:0 0 15px rgba(56,189,248,0.3);
 }
 
-/* PROJECTS (UNCHANGED) */
+/* PROJECTS */
 .projects{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -295,7 +303,7 @@ h2{
     margin-top:8px;
 }
 
-/* CONTACT (UNCHANGED) */
+/* CONTACT */
 .contact{
     display:flex;
     flex-direction:column;
@@ -345,12 +353,12 @@ button{
     transform:translateY(-3px);
 }
 
-/* MEDIA QUERIES (الحفاظ على تصغير الجوال والوزنيات) */
+/* MEDIA QUERIES - تحسين متقن لعرض الموبايل والقوائم */
 @media (max-width: 600px) {
     nav {
-        padding: 10px 12px;
+        padding: 12px 16px;
         flex-direction: column;
-        gap: 10px;
+        gap: 12px;
         background: rgba(11, 18, 32, 0.95);
     }
     body.light nav {
@@ -359,116 +367,116 @@ button{
     nav .brand-line {
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: space-between;
         width: 100%;
-        gap: 8px;
     }
     nav b {
-        font-size: 16px;
+        font-size: 18px;
     }
     nav .btn {
-        padding: 4px 8px;
-        font-size: 11px;
-        margin-left: 0px;
+        padding: 5px 10px;
+        font-size: 12px;
+        margin-left: 5px;
         border-radius: 6px;
     }
     nav .nav-links {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 10px;
         width: 100%;
     }
     nav a {
-        margin: 0 3px;
-        font-size: 11px;
+        margin: 0 4px;
+        font-size: 13px;
     }
 
     section {
-        padding: 25px 12px;
+        padding: 40px 16px;
     }
     
     .hero {
-        padding-top: 100px;
+        padding-top: 120px;
         height: auto;
-        min-height: 75vh;
+        min-height: 80vh;
     }
     .hero h1 {
-        font-size: 24px;
+        font-size: 32px;
+        line-height: 1.3;
     }
     .hero p {
-        font-size: 12px;
-        margin-top: 6px;
+        font-size: 14px;
+        margin-top: 8px;
     }
     .cv-btn {
-        margin-top: 15px;
-        padding: 8px 12px;
-        font-size: 12px;
+        margin-top: 20px;
+        padding: 10px 16px;
+        font-size: 14px;
     }
     
     h2 {
-        font-size: 16px;
-        margin-bottom: 10px;
+        font-size: 20px;
+        margin-bottom: 15px;
     }
     .about {
-        font-size: 12px;
-        line-height: 1.5;
+        font-size: 14px;
+        line-height: 1.6;
     }
 
     .skills {
-        gap: 5px;
+        gap: 8px;
     }
     .skill {
-        padding: 4px 8px;
-        font-size: 11px;
+        padding: 6px 12px;
+        font-size: 13px;
         border-radius: 6px;
     }
     
     .projects {
-        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-        gap: 6px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
     }
     .card {
-        padding: 10px;
-        border-radius: 8px;
+        padding: 14px;
+        border-radius: 10px;
     }
     .card h3 {
-        font-size: 12px;
+        font-size: 14px;
     }
     .card p {
-        font-size: 10px;
-        margin-top: 3px;
+        font-size: 12px;
+        margin-top: 5px;
     }
     
     .social-container {
-        gap: 10px;
+        gap: 12px;
     }
     .social-icon {
-        width: 42px;
-        height: 42px;
+        width: 46px;
+        height: 46px;
     }
     .social-icon svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
     }
 
     .contact {
-        gap: 8px;
+        gap: 10px;
     }
     input, textarea {
-        padding: 8px;
-        font-size: 12px;
+        padding: 10px;
+        font-size: 14px;
         border-radius: 6px;
     }
     button {
-        padding: 8px;
-        font-size: 12px;
+        padding: 10px;
+        font-size: 14px;
         border-radius: 6px;
     }
     
     footer {
-        padding: 15px !important;
-        font-size: 11px !important;
+        padding: 20px !important;
+        font-size: 12px !important;
     }
 }
 </style>
@@ -479,8 +487,10 @@ button{
 <nav>
     <div class="brand-line">
         <b>Abdulrahman</b>
-        <button class="btn" onclick="toggleTheme()">Theme</button>
-        <button class="btn" onclick="toggleLang()">AR / EN</button>
+        <div>
+            <button class="btn" onclick="toggleTheme()">Theme</button>
+            <button class="btn" onclick="toggleLang()">AR / EN</button>
+        </div>
     </div>
 
     <div class="nav-links">
@@ -689,5 +699,4 @@ cards.forEach(card=>{
 </script>
 
 </body>
-                </html>
-                
+</html>
