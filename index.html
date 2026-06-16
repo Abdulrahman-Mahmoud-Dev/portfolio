@@ -712,17 +712,13 @@ button{
 </section>
 
 <section id="contact" class="hidden">
-    <h2>Contact</h2>
+    <form class="contact" action="https://formspree.io/f/xvznyply" method="POST">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <textarea name="message" rows="5" placeholder="Message" required></textarea>
+    <button type="submit">Send</button>
+</form>
 
-    <div class="contact">
-
-        <input type="text" placeholder="Name">
-        <input type="email" placeholder="Email">
-        <textarea rows="5" placeholder="Message"></textarea>
-
-        <button>Send</button>
-
-    </div>
 </section>
     
 <footer style="text-align: center; padding: 25px; background: #111a2e; color: #94a3b8; font-size: 14px; border-top: 1px solid rgba(56,189,248,0.1);">
