@@ -759,6 +759,21 @@ function toggleLang(){
     }
 }
 
+    // مسح بيانات النموذج وإعادة الترحيب
+window.addEventListener('load', () => {
+    const form = document.querySelector('form');
+    if (form) {
+        form.reset();
+    }
+    const homeSection = document.getElementById('home');
+    if (homeSection) {
+        homeSection.classList.remove('animate-welcome');
+        void homeSection.offsetWidth;
+        homeSection.classList.add('animate-welcome');
+    }
+});
+    
+
 /* scroll animation */
 const observer = new IntersectionObserver(entries=>{
     entries.forEach(e=>{
