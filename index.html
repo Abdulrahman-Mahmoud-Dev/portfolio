@@ -712,7 +712,7 @@ button{
 </section>
 
 <section id="contact" class="hidden">
-    <form class="contact" action="https://formspree.io/f/xvznyply" method="POST">
+    <form id="contactForm" class="contact">
     <input type="text" name="name" placeholder="Name" required>
     <input type="email" name="email" placeholder="Email" required>
     <textarea name="message" rows="5" placeholder="Message" required></textarea>
@@ -760,18 +760,29 @@ function toggleLang(){
 }
 
     // مسح بيانات النموذج وإعادة الترحيب
-window.addEventListener('load', () => {
-    const form = document.querySelector('form');
-    if (form) {
-        form.reset();
-    }
-    const homeSection = document.getElementById('home');
-    if (homeSection) {
-        homeSection.classList.remove('animate-welcome');
-        void homeSection.offsetWidth;
-        homeSection.classList.add('animate-welcome');
-    }
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    const form = this;
+    const formData = new FormData(form);
+    fetch("https://formspree.io/f/xvznyply", {
+        method: "POST",
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            form.reset();
+            const home = document.getElementById('home');
+            if (home) {
+                home.classList.remove('animate-welcome');
+                void home.offsetWidth;
+                home.classList.add('animate-welcome');
+            }
+            window.location.hash = "#home";
+            alert("تم إرسال رسالتك بنجاح!");
+        }
+    });
 });
+
     
 
 /* scroll animation */
