@@ -766,8 +766,6 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     const form = this;
     const btn = form.querySelector('button[type="submit"]');
     
-    // 1. إضافة تأثير تفاعلي عند الضغط
-    btn.style.backgroundColor = "#555"; // تغيير اللون عند الضغط
     btn.innerText = "جاري الإرسال...";
     btn.disabled = true;
 
@@ -778,31 +776,24 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
         body: formData,
         headers: { 'Accept': 'application/json' }
     }).then(response => {
-        // 2. إعادة الزر لوضعه الطبيعي
-        btn.style.backgroundColor = ""; 
         btn.innerText = "Send";
         btn.disabled = false;
 
         if (response.ok) {
             form.reset();
+            // الانتقال لقسم الترحيب
+            window.location.href = "#home";
+            // إعادة تفعيل الأنيميشن
             const home = document.getElementById('home');
             if (home) {
                 home.classList.remove('animate-welcome');
                 void home.offsetWidth;
                 home.classList.add('animate-welcome');
-                window.location.hash = "#home";
             }
-            alert("تم إرسال رسالتك بنجاح!");
-        } else {
-            alert("حدث خطأ، حاول مرة أخرى.");
         }
-    }).catch(() => {
-        btn.style.backgroundColor = "";
-        btn.innerText = "Send";
-        btn.disabled = false;
-        alert("تأكد من اتصالك بالإنترنت.");
     });
 });
+
 
 
     
