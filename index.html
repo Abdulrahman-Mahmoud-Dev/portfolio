@@ -122,8 +122,9 @@ nav a:hover{
     height: 130px;
     border-radius: 50%;
     margin-bottom: 18px;
-    opacity: 0;
+    opacity: 1;
     box-shadow: 0 12px 35px rgba(0,0,0,0.35), 0 4px 10px rgba(0,0,0,0.2);
+    animation: photoAppear 1s ease-out forwards;
 }
 
 .hero-photo {
@@ -179,19 +180,21 @@ nav a:hover{
 .hero-greeting {
     font-size: 36px;
     font-weight: 800;
-    opacity: 0;
+    opacity: 1;
     color: var(--text);
     line-height: 1.2;
+    animation: welcomeWaveAndGlow 1.6s ease-out 0.2s both;
 }
 
 /* Hero name line */
 .hero-name {
     font-size: 52px;
     font-weight: 800;
-    opacity: 0;
+    opacity: 1;
     color: var(--accent);
     line-height: 1.2;
     margin-top: 4px;
+    animation: welcomeWaveAndGlow 1.6s ease-out 0.2s both;
 }
 
 .hero.animate-welcome .hero-greeting {
@@ -218,7 +221,18 @@ nav a:hover{
 .hero p{
     color:var(--muted);
     margin-top:10px;
-    opacity: 0; 
+    opacity: 1;
+    animation: subtitleFade 1s ease-out 1.2s both;
+}
+
+.cv-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 1;
+    animation: subtitleFade 1s ease-out 1.6s both;
 }
 
 .hero.animate-welcome p {
@@ -236,15 +250,6 @@ nav a:hover{
     font-size: 11px;
     color: var(--accent);
     font-weight: 500;
-}
-
-.cv-btns {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    opacity: 0;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .hero.animate-welcome .cv-btns {
@@ -787,17 +792,4 @@ const observer = new IntersectionObserver(entries=>{
             e.target.classList.add("show");
             if (e.target.id === 'home') {
                 e.target.classList.add('animate-welcome');
-            }
-        }
-    });
-});
-
-document.querySelectorAll(".hidden, .hero").forEach(el=>{
-    observer.observe(el);
-});
-
-window.addEventListener('load', () => {
-    document.getElementById('home').classList.add('animate-welcome');
-});
-
-const cards = document.querySelector
+         
