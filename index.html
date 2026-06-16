@@ -19,6 +19,21 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
 <style>
+
+    /* الأقسام تبدأ مخفية وبحالة جاهزة للحركة */
+.about, .projects {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* عندما يضيف الجافا كلاس visible، ستظهر الأقسام بنعومة */
+.about.visible, .projects.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+    
 :root{
     --bg:#0b1220;
     --card:#111a2e;
@@ -886,6 +901,24 @@ cards.forEach(card=>{
     });
 });
 
+</script>
+
+    <script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // الرقم 500 هنا يعني تأخير نص ثانية (500 مللي ثانية)
+                // كل ما زدت الرقم، زاد التأخير
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, 500); 
+            }
+        });
+    });
+
+    // هنا تضع أسماء الأقسام التي تريد تطبيق التأخير عليها
+    // تأكد أن هذه الأسماء موجودة كـ class في الأقسام عندك
+    document.querySelectorAll('.about, .projects, .skills').forEach((el) => observer.observe(el));
 </script>
 
 </body>
