@@ -13,6 +13,8 @@
     
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Abdulrahman Mahmoud — Data Analyst & Developer from Jeddah. Skilled in Power BI, Excel, SQL, and Python. View my portfolio and projects.">
+<meta name="keywords" content="Abdulrahman Mahmoud, Data Analyst, Power BI, Excel, SQL, Python, Portfolio, Jeddah">
 <title>Abdulrahman Mahmoud | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -120,8 +122,9 @@ nav a:hover{
     height: 130px;
     border-radius: 50%;
     margin-bottom: 18px;
-    opacity: 0;
+    opacity: 1;
     box-shadow: 0 12px 35px rgba(0,0,0,0.35), 0 4px 10px rgba(0,0,0,0.2);
+    animation: photoAppear 1s ease-out forwards;
 }
 
 .hero-photo {
@@ -177,19 +180,21 @@ nav a:hover{
 .hero-greeting {
     font-size: 36px;
     font-weight: 800;
-    opacity: 0;
+    opacity: 1;
     color: var(--text);
     line-height: 1.2;
+    animation: welcomeWaveAndGlow 1.6s ease-out 0.2s both;
 }
 
 /* Hero name line */
 .hero-name {
     font-size: 52px;
     font-weight: 800;
-    opacity: 0;
+    opacity: 1;
     color: var(--accent);
     line-height: 1.2;
     margin-top: 4px;
+    animation: welcomeWaveAndGlow 1.6s ease-out 0.2s both;
 }
 
 .hero.animate-welcome .hero-greeting {
@@ -216,7 +221,18 @@ nav a:hover{
 .hero p{
     color:var(--muted);
     margin-top:10px;
-    opacity: 0; 
+    opacity: 1;
+    animation: subtitleFade 1s ease-out 1.2s both;
+}
+
+.cv-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 1;
+    animation: subtitleFade 1s ease-out 1.6s both;
 }
 
 .hero.animate-welcome p {
@@ -234,15 +250,6 @@ nav a:hover{
     font-size: 11px;
     color: var(--accent);
     font-weight: 500;
-}
-
-.cv-btns {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    opacity: 0;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
 .hero.animate-welcome .cv-btns {
@@ -326,30 +333,44 @@ h2{
 
 .social-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+    flex-wrap: nowrap;
+    gap: 12px;
     justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 8px;
+    padding-top: 10px;
+}
+
+.social-container::-webkit-scrollbar {
+    display: none;
 }
 
 .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 38px;
+    height: 38px;
     background: var(--card);
-    border-radius: 50%;
+    border-radius: 10px;
     color: var(--text);
     text-decoration: none;
-    transition: 0.3s ease;
-    border: 1px solid transparent;
+    transition: 0.3s;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.social-icon svg {
+    width: 16px;
+    height: 16px;
 }
 
 .social-icon:hover {
-    transform: translateY(-6px) scale(1.08);
-    border: 1px solid var(--accent);
+    transform: translateY(-6px) scale(1.05);
     box-shadow: 0 0 15px rgba(56,189,248,0.3);
-    color: var(--accent);
 }
 
 .card{
@@ -549,15 +570,15 @@ button{
     }
     
     .social-container {
-        gap: 12px;
+        gap: 8px;
     }
     .social-icon {
-        width: 46px;
-        height: 46px;
+        width: 36px;
+        height: 36px;
     }
     .social-icon svg {
-        width: 22px;
-        height: 22px;
+        width: 16px;
+        height: 16px;
     }
 
     .contact {
@@ -775,33 +796,4 @@ const observer = new IntersectionObserver(entries=>{
     });
 });
 
-document.querySelectorAll(".hidden, .hero").forEach(el=>{
-    observer.observe(el);
-});
-
-window.addEventListener('load', () => {
-    document.getElementById('home').classList.add('animate-welcome');
-});
-
-const cards = document.querySelectorAll("#projects .card");
-
-cards.forEach(card=>{
-    card.addEventListener("mouseenter", ()=>{
-        cards.forEach(c=>{
-            if(c !== card){
-                c.classList.add("project-dim");
-            }
-        });
-    });
-
-    card.addEventListener("mouseleave", ()=>{
-        cards.forEach(c=>{
-            c.classList.remove("project-dim");
-        });
-    });
-});
-
-</script>
-
-</body>
-</html>
+document.querySelectorAll(".hi
