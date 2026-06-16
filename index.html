@@ -13,8 +13,6 @@
     
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Abdulrahman Mahmoud — Data Analyst & Developer from Jeddah. Skilled in Power BI, Excel, SQL, and Python. View my portfolio and projects.">
-<meta name="keywords" content="Abdulrahman Mahmoud, Data Analyst, Power BI, Excel, SQL, Python, Portfolio, Jeddah">
 <title>Abdulrahman Mahmoud | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -117,29 +115,19 @@ nav a:hover{
     100% { opacity:1; transform:scale(1) translateY(0); }
 }
 
-.hero-photo-wrapper {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    margin-bottom: 18px;
-    opacity: 1;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.35), 0 4px 10px rgba(0,0,0,0.2);
-    animation: photoAppear 1s ease-out forwards;
-}
-
 .hero-photo {
     width: 130px;
     height: 130px;
     border-radius: 50%;
     object-fit: cover;
     object-position: center top;
-    border: none;
-    -webkit-mask-image: radial-gradient(circle, black 58%, transparent 75%);
-    mask-image: radial-gradient(circle, black 58%, transparent 75%);
-    display: block;
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 0 6px rgba(56,189,248,0.15), 0 8px 32px rgba(0,0,0,0.45);
+    margin-bottom: 18px;
+    opacity: 0;
 }
 
-.hero.animate-welcome .hero-photo-wrapper {
+.hero.animate-welcome .hero-photo {
     animation: photoAppear 1s ease-out forwards;
     animation-delay: 0s;
 }
@@ -180,21 +168,19 @@ nav a:hover{
 .hero-greeting {
     font-size: 36px;
     font-weight: 800;
-    opacity: 1;
+    opacity: 0;
     color: var(--text);
     line-height: 1.2;
-    animation: welcomeWaveAndGlow 1.6s ease-out 0.2s both;
 }
 
 /* Hero name line */
 .hero-name {
     font-size: 52px;
     font-weight: 800;
-    opacity: 1;
+    opacity: 0;
     color: var(--accent);
     line-height: 1.2;
     margin-top: 4px;
-    animation: welcomeWaveAndGlow 1.6s ease-out 0.2s both;
 }
 
 .hero.animate-welcome .hero-greeting {
@@ -221,23 +207,12 @@ nav a:hover{
 .hero p{
     color:var(--muted);
     margin-top:10px;
-    opacity: 1;
-    animation: subtitleFade 1s ease-out 1.2s both;
-}
-
-.cv-btns {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    opacity: 1;
-    animation: subtitleFade 1s ease-out 1.6s both;
+    opacity: 0; 
 }
 
 .hero.animate-welcome p {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 1.2s; 
+    animation-delay: 2s; 
 }
 
 .brand-info {
@@ -252,9 +227,18 @@ nav a:hover{
     font-weight: 500;
 }
 
+.cv-btns {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    opacity: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .hero.animate-welcome .cv-btns {
     animation: subtitleFade 1s ease-out forwards;
-    animation-delay: 1.6s;
+    animation-delay: 2.4s;
 }
 
 .cv-btn{
@@ -333,44 +317,30 @@ h2{
 
 .social-container {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 12px;
+    flex-wrap: wrap;
+    gap: 16px;
     justify-content: flex-start;
-    align-items: center;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 8px;
-    padding-top: 10px;
-}
-
-.social-container::-webkit-scrollbar {
-    display: none;
 }
 
 .social-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 38px;
-    height: 38px;
+    width: 50px;
+    height: 50px;
     background: var(--card);
-    border-radius: 10px;
+    border-radius: 50%;
     color: var(--text);
     text-decoration: none;
-    transition: 0.3s;
-    flex-shrink: 0;
-    cursor: pointer;
-}
-
-.social-icon svg {
-    width: 16px;
-    height: 16px;
+    transition: 0.3s ease;
+    border: 1px solid transparent;
 }
 
 .social-icon:hover {
-    transform: translateY(-6px) scale(1.05);
+    transform: translateY(-6px) scale(1.08);
+    border: 1px solid var(--accent);
     box-shadow: 0 0 15px rgba(56,189,248,0.3);
+    color: var(--accent);
 }
 
 .card{
@@ -507,10 +477,6 @@ button{
         min-height: 100vh;
     }
 
-    .hero-photo-wrapper {
-        width: 100px;
-        height: 100px;
-    }
     .hero-photo {
         width: 100px;
         height: 100px;
@@ -570,15 +536,15 @@ button{
     }
     
     .social-container {
-        gap: 8px;
+        gap: 12px;
     }
     .social-icon {
-        width: 36px;
-        height: 36px;
+        width: 46px;
+        height: 46px;
     }
     .social-icon svg {
-        width: 16px;
-        height: 16px;
+        width: 22px;
+        height: 22px;
     }
 
     .contact {
@@ -627,9 +593,7 @@ button{
 </nav>
 
 <section class="hero" id="home">
-    <div class="hero-photo-wrapper">
-        <img src="photo.png" alt="Abdulrahman Mahmoud" class="hero-photo">
-    </div>
+    <img src="photo.png" alt="Abdulrahman Mahmoud" class="hero-photo">
     <div class="hero-greeting" id="greetingLine">Hi, I'm</div>
     <div class="hero-name" id="nameLine">Abdulrahman Mahmoud</div>
     <p id="subtitle">Data Analyst | Developer | Problem Solver</p>
@@ -796,4 +760,18 @@ const observer = new IntersectionObserver(entries=>{
     });
 });
 
-document.querySelectorAll(".hi
+document.querySelectorAll(".hidden, .hero").forEach(el=>{
+    observer.observe(el);
+});
+
+window.addEventListener('load', () => {
+    document.getElementById('home').classList.add('animate-welcome');
+});
+
+const cards = document.querySelectorAll("#projects .card");
+
+cards.forEach(card=>{
+    card.addEventListener("mouseenter", ()=>{
+        cards.forEach(c=>{
+            if(c !== card){
+          
